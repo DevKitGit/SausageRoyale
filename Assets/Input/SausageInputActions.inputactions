@@ -1,5 +1,5 @@
 {
-    "name": "Sausage",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "UI",
@@ -19,6 +19,17 @@
                 {
                     "name": "",
                     "id": "97b837b8-5392-45c2-a0c9-4c59af6bed58",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cadda8cd-3da8-49cb-a8eb-41758403b407",
                     "path": "",
                     "interactions": "",
                     "processors": "",
@@ -73,6 +84,15 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "3a0241ca-5684-4fe9-9246-025752609b91",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "08b9fd38-62e4-4e44-a057-e5e85d26a766",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -242,6 +262,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a26d34cd-2ea8-4b08-ac20-f01c0d217a35",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
