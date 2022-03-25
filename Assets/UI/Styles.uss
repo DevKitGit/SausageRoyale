@@ -1,0 +1,27 @@
+.button {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 24px;
+    -unity-font-style: bold;
+    background-color: rgb(77, 43, 43);
+    color: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-back;
+    -unity-text-align: upper-right;
+}
+
+.button:hover {
+    min-width: 300px;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out-bounce;
+}
