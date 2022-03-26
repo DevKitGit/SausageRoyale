@@ -5,30 +5,52 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public class InputManager : MonoBehaviour
+{
+    public static InputManager Instance { get; private set; }
+    
+    private readonly List<PlayerController> _controllers = new List<PlayerController>();
+
+    public static List<PlayerController> PlayerControllers => Instance._controllers;
+	
+    [RuntimeInitializeOnLoadMethod]
+    private static void OnGameStart()
+    {
+        var instance = new GameObject("INPUT MANAGER").AddComponent<InputManager>();
+        DontDestroyOnLoad(instance);
+        Instance = instance;
+    }
+
+    public static void AddPlayer(PlayerController controller)
+    {
+        PlayerControllers.Add(controller);
+        DontDestroyOnLoad(controller);
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
-    public PlayerInput m_PlayerInput { get; private set; }
-
-    public PlayerInput.ActionEvent
-        UiNavigate,
-        UISubmit,
-        UiCancel,
-        PlayerJump,
-        PlayerMoveA,
-        PlayerMoveB,
-        PlayerGrabA,
-        PlayerGrabB,
-        PlayerPause;
+    public PlayerInput PlayerInput { get; private set; }
     
+    public PlayerInput.ActionEvent UiNavigate;
+    public PlayerInput.ActionEvent UISubmit;
+    public PlayerInput.ActionEvent UiCancel;
+    public PlayerInput.ActionEvent PlayerJump;
+    public PlayerInput.ActionEvent PlayerMoveA;
+    public PlayerInput.ActionEvent PlayerMoveB;
+    public PlayerInput.ActionEvent PlayerGrabA;
+    public PlayerInput.ActionEvent PlayerGrabB;
+    public PlayerInput.ActionEvent PlayerPause;
+
     void Start()
     {
-        m_PlayerInput = GetComponent<PlayerInput>();
+        PlayerInput = GetComponent<PlayerInput>();
         SetupEvents();
     }
     
     void SetupEvents()
     {
-        var actionEvents = m_PlayerInput.actionEvents;
+        var actionEvents = PlayerInput.actionEvents;
         UiNavigate = actionEvents.First(e => e.actionName.Contains("UI/Navigate"));
         UISubmit = actionEvents.First(e => e.actionName.Contains("UI/Submit"));
         UiCancel = actionEvents.First(e => e.actionName.Contains("UI/Cancel"));
