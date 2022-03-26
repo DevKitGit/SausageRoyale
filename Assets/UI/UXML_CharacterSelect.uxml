@@ -5,10 +5,10 @@
         <ui:VisualElement style="flex-grow: 1; flex-direction: column-reverse; align-items: center;">
             <ui:Label text="CHOOSE A SAUSAGE" display-tooltip-when-elided="true" class="header text" />
             <ui:VisualElement style="align-items: center; justify-content: center; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px; flex-direction: row;">
-                <ui:Button display-tooltip-when-elided="true" name="character-1" enable-rich-text="false" class="button__vertical player__1" />
-                <ui:Button display-tooltip-when-elided="true" name="character-2" enable-rich-text="false" class="button__vertical player__2" />
-                <ui:Button display-tooltip-when-elided="true" name="character-3" enable-rich-text="false" class="button__vertical player__3" />
-                <ui:Button display-tooltip-when-elided="true" name="character-4" enable-rich-text="false" class="button__vertical player__4" />
+                <ui:Button display-tooltip-when-elided="true" name="character-1" enable-rich-text="false" class="button__vertical" />
+                <ui:Button display-tooltip-when-elided="true" name="character-2" enable-rich-text="false" class="button__vertical" />
+                <ui:Button display-tooltip-when-elided="true" name="character-3" enable-rich-text="false" class="button__vertical" />
+                <ui:Button display-tooltip-when-elided="true" name="character-4" enable-rich-text="false" class="button__vertical" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Instance template="TEMPLATE_navigation" name="TEMPLATE_navigation" />

@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS_Styles.uss?fileID=7433441132597879392&amp;guid=4754db1e383ca1840a08995a8f176a45&amp;type=3#USS_Styles" />
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(238, 73, 73, 255);">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(238, 73, 73);">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
             <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
                 <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="newgame" class="button" />
-                <ui:Button text="OPTIONS" display-tooltip-when-elided="true" name="options" class="button" />
-                <ui:Button text="EXIT" display-tooltip-when-elided="true" name="exit" class="button" />
+                <ui:Button text="OPTIONS" display-tooltip-when-elided="true" name="options" tabindex="1" class="button" />
+                <ui:Button text="EXIT" display-tooltip-when-elided="true" name="exit" tabindex="2" class="button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

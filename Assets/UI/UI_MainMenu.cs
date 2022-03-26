@@ -17,8 +17,9 @@ public class UI_MainMenu : MonoBehaviour
     void OnEnable()
     { 
 	    var root = _uiDocument.rootVisualElement;
-	    root.Q<Button>("newgame").Focus();
-	    root.Q<Button>("newgame").clicked += () =>
+	    var newGame = root.Q<Button>("newgame");
+	    newGame.Focus();
+	    newGame.clicked += () =>
 	    {
 		    _characterSelectDocument.gameObject.SetActive(true);
 		    gameObject.SetActive(false);

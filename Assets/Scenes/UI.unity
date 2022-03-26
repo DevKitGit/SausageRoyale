@@ -342,8 +342,8 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_DeselectOnBackgroundClick: 0
+  m_PointerBehavior: 1
 --- !u!114 &1334595540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 3680493030526455241, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    m_Reference: {fileID: 642865790222272053, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
   m_PlayerPrefab: {fileID: 5062027600983921548, guid: f01aff5899b086d47be7800e72637f92, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

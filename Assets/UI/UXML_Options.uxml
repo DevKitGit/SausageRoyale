@@ -1,13 +1,18 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="TEMPLATE_navigation" src="project://database/Assets/UI/TEMPLATE_navigation.uxml?fileID=9197481963319205126&amp;guid=515072ec4f5e61a40bbde532fc0e430a&amp;type=3#TEMPLATE_navigation" />
     <Style src="project://database/Assets/UI/USS_Styles.uss?fileID=7433441132597879392&amp;guid=4754db1e383ca1840a08995a8f176a45&amp;type=3#USS_Styles" />
     <ui:VisualElement style="flex-grow: 1; background-color: rgb(238, 100, 73);">
         <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
             <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
                 <ui:Toggle label="SOUND EFFECTS" name="sfx" class="button" />
-                <ui:Toggle label="MUSIC" name="music" class="button" />
+                <ui:Toggle label="MUSIC" name="music" tabindex="1" class="button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Instance template="TEMPLATE_navigation" name="TEMPLATE_navigation" />
+        <ui:VisualElement name="TEMPLATE_navigation">
+            <ui:VisualElement name="navigation" style="align-items: flex-end; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+                <ui:VisualElement style="max-width: 200px;">
+                    <ui:Button text="BACK" display-tooltip-when-elided="true" name="back" tabindex="2" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
