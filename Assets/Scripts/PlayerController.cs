@@ -51,16 +51,16 @@ public class PlayerController : MonoBehaviour
     
     void SetupEvents()
     {
-        var actionEvent = _playerInput.actionEvents;
-        UiNavigate = actionEvent.First(e => e.actionName.Contains("UI/Navigate"));
-        UISubmit = actionEvent.First(e => e.actionName.Contains("UI/Submit"));
-        UiCancel = actionEvent.First(e => e.actionName.Contains("UI/Cancel"));
-        PlayerJump = actionEvent.First(e => e.actionName.Contains("Player/Jump"));
-        PlayerMoveA = actionEvent.First(e => e.actionName.Contains("Player/MoveA"));
-        PlayerMoveB = actionEvent.First(e => e.actionName.Contains("Player/MoveB"));
-        PlayerGrabA = actionEvent.First(e => e.actionName.Contains("Player/GrabA"));
-        PlayerGrabB = actionEvent.First(e => e.actionName.Contains("Player/GrabB"));
-        PlayerPause = actionEvent.First(e => e.actionName.Contains("Player/Pause"));
+        var actionEvents = _playerInput.actionEvents;
+        UiNavigate = actionEvents.First(e => e.actionName.Contains("UI/Navigate"));
+        UISubmit = actionEvents.First(e => e.actionName.Contains("UI/Submit"));
+        UiCancel = actionEvents.First(e => e.actionName.Contains("UI/Cancel"));
+        PlayerJump = actionEvents.First(e => e.actionName.Contains("Player/Jump"));
+        PlayerMoveA = actionEvents.First(e => e.actionName.Contains("Player/MoveA"));
+        PlayerMoveB = actionEvents.First(e => e.actionName.Contains("Player/MoveB"));
+        PlayerGrabA = actionEvents.First(e => e.actionName.Contains("Player/GrabA"));
+        PlayerGrabB = actionEvents.First(e => e.actionName.Contains("Player/GrabB"));
+        PlayerPause = actionEvents.First(e => e.actionName.Contains("Player/Pause"));
         PlayerJump.AddListener(Jump);
         PlayerMoveA.AddListener(MoveStartRb);
         PlayerMoveB.AddListener(MoveEndRb);
@@ -99,6 +99,4 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
-
 }

@@ -1160,53 +1160,69 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5062027600983921548}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+    m_ActionId: e2a2d5ac-59b8-406e-95d6-bd7601665aca
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 750268d7-94f5-4a5e-9304-d7e46e6b9fe0
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 06e6b838-73e9-42fa-b029-760b0873dad1
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6840bf3a-db4b-4136-aa3e-1617bb7f4883
+    m_ActionName: UI/Point
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 954498b3-be7b-4632-96a7-77066dc17f42
+    m_ActionName: UI/Click
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 075b7aa4-237d-4370-bd9b-71f236d07f5e
+    m_ActionName: UI/ScrollWheel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 22f86f0e-309b-4242-8b6a-43315c0be29a
+    m_ActionName: UI/MiddleClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 001e6c14-6a67-44f1-9310-bb2d2ee6a3b4
+    m_ActionName: UI/RightClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ec952b9-4272-4f01-a9df-68b0203a48ec
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fbbd1e9d-a2a3-4273-8e10-b8919015997c
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c5f36c31-d34a-49e1-9837-9545e08e1492
+    m_ActionName: UI/Join[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
     m_ActionId: 788b0b43-fbd6-41e5-b3a6-363678398616
-    m_ActionName: Player/MoveA[/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick,/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right]
+    m_ActionName: Player/MoveA[/XInputControllerWindows/leftStick,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 68cf9e46-fdd6-4df8-a856-20b55f4f42e0
-    m_ActionName: Player/MoveB[/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows/rightStick/up,/XInputControllerWindows1/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows1/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows1/rightStick/left,/XInputControllerWindows/rightStick/right,/XInputControllerWindows1/rightStick/right]
+    m_ActionName: Player/MoveB[/XInputControllerWindows/rightStick,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/right]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 0f48c359-c0f9-4d26-adfc-617b02cbe522
-    m_ActionName: Player/GrabA[/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger]
+    m_ActionName: Player/GrabA[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b2030f64-bf68-4ac0-8a0f-5c106644dc1c
-    m_ActionName: Player/GrabB[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger]
+    m_ActionName: Player/GrabB[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 3a0241ca-5684-4fe9-9246-025752609b91
-    m_ActionName: Player/Jump[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b04d34a8-4dc2-4d2f-bec9-76dcbd85c023
-    m_ActionName: UI/Select[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 276ff2a9-6141-4b1b-8164-c144b3779062
-    m_ActionName: UI/Navigate[/XInputControllerWindows/dpad,/XInputControllerWindows1/dpad,/XInputControllerWindows/dpad/up,/XInputControllerWindows1/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows1/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows1/dpad/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 16c5182d-a73e-4016-8562-60c2c7e6ecbb
-    m_ActionName: UI/Back[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c762ca44-4914-4f9a-abbc-2b77042c0194
-    m_ActionName: UI/Join[/XInputControllerWindows/start,/XInputControllerWindows1/start]
+    m_ActionName: Player/Jump[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: acc04f75-7af1-4c1b-a677-3d406f00c1eb
@@ -1236,12 +1252,12 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 
     m_ActionName: 
-  UiSelect:
+  UISubmit:
     m_PersistentCalls:
       m_Calls: []
     m_ActionId: 
     m_ActionName: 
-  UiBack:
+  UiCancel:
     m_PersistentCalls:
       m_Calls: []
     m_ActionId: 
