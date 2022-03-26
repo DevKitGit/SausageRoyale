@@ -64,3 +64,7 @@ crashlytics-build.properties
 
 UserSettings/Layouts/
 ProjectSettings/RiderScriptEditorPersistedState.asset
+
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
