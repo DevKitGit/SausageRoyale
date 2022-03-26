@@ -1,45 +1,6 @@
 {
-    "name": "PlayerInput",
+    "name": "SausageInputActions",
     "maps": [
-        {
-            "name": "UI",
-            "id": "fadf61a6-0acb-49d7-bcc7-9bf1b247e4ad",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "95f978e1-0c1f-490a-a7a2-4e6a302bfcf2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "97b837b8-5392-45c2-a0c9-4c59af6bed58",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cadda8cd-3da8-49cb-a8eb-41758403b407",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
         {
             "name": "Player",
             "id": "aa61a2c3-a0f5-4e29-ada1-44a2c0931070",
@@ -90,9 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Join",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "08b9fd38-62e4-4e44-a057-e5e85d26a766",
+                    "id": "acc04f75-7af1-4c1b-a677-3d406f00c1eb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -267,7 +228,150 @@
                 },
                 {
                     "name": "",
-                    "id": "a26d34cd-2ea8-4b08-ac20-f01c0d217a35",
+                    "id": "694c9a63-e558-4ad2-be8e-16b7cfb29a1d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "fadf61a6-0acb-49d7-bcc7-9bf1b247e4ad",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "b04d34a8-4dc2-4d2f-bec9-76dcbd85c023",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Navigate",
+                    "type": "PassThrough",
+                    "id": "276ff2a9-6141-4b1b-8164-c144b3779062",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "16c5182d-a73e-4016-8562-60c2c7e6ecbb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "c762ca44-4914-4f9a-abbc-2b77042c0194",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "04492789-e418-4ba1-b115-c3b716065715",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6334c958-f12d-49a1-9955-9719c6d11901",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "e25ba2f9-bcb0-48d2-acb2-eed1480e92e7",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "08b22306-cc4d-4a74-93ec-5cdbf9f24617",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c326539c-d527-49ba-a2dc-5a2bfe5665e7",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "65376b08-8375-4d95-b7f0-4469d6386965",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "4b5bc9ba-e8aa-4221-b3d9-eacf01485a83",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f0b2cd20-95f3-477e-80a9-52221d68880a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d516bc28-20fc-4831-9fed-74eca184478f",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
