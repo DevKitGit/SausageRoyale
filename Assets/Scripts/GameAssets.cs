@@ -6,9 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu]
-public class GameState : ScriptableObject
+public class GameAssets : ScriptableObject
 {
 	
-
-
 }

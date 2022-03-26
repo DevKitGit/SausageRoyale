@@ -1,32 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-public class InputManager : MonoBehaviour
-{
-    public static InputManager Instance { get; private set; }
-    
-    private readonly List<PlayerController> _controllers = new List<PlayerController>();
-
-    public static List<PlayerController> PlayerControllers => Instance._controllers;
-	
-    [RuntimeInitializeOnLoadMethod]
-    private static void OnGameStart()
-    {
-        var instance = new GameObject("INPUT MANAGER").AddComponent<InputManager>();
-        DontDestroyOnLoad(instance);
-        Instance = instance;
-    }
-
-    public static void AddPlayer(PlayerController controller)
-    {
-        PlayerControllers.Add(controller);
-        DontDestroyOnLoad(controller);
-    }
-}
 
 public class PlayerController : MonoBehaviour
 {

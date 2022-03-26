@@ -23,7 +23,7 @@ public static class UIExtensions
 	}
 
 
-	public static void BindValue(this Button button, Action action) => button.RegisterCallback<ClickEvent>(_ => action?.Invoke());
+	public static void BindValue(this Button button, Action action) => button.clicked += action;
 
 	public static void Activate(this IMenuHandler instance, bool shouldDisplay)
 	{
@@ -43,7 +43,6 @@ public static class UIExtensions
 			{
 				e.PreventDefault();
 				target?.Focus();
-				Debug.Log($"Setting focus to {target.name}");
 			}
 		});
 	}

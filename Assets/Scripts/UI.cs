@@ -44,13 +44,12 @@ public class UI : MonoBehaviour
 		current.Element.GetFirstOfType<Button>()?.Focus();
 	}
 
-	private void Awake()
+	private void Start()
 	{
 		Root = GetComponent<UIDocument>().rootVisualElement;
-
+		InputManager.Instance.EventSystem.SetSelectedGameObject(gameObject);
 		SetupNavigation();
 		SetupHandlers();
-
 		NavigateTo<MainMenuHandler>();
 	}
 
@@ -73,6 +72,7 @@ public class UI : MonoBehaviour
 
 	private void SetupNavigation()
 	{
+		InputManager.Instance.InputSystem.cancel.action.performed += context => Back();
 		_navigation = Root.Q("navigation");
 		NavigationButton = Root.Q<Button>("back");
 		NavigationButton.BindValue(Back);
