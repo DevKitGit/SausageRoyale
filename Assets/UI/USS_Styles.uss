@@ -1,4 +1,4 @@
-.button:hover .unity-toggle__checkmark {
+.button:focus .unity-toggle__checkmark {
     background-color: rgb(19, 19, 19);
 }
 
@@ -19,7 +19,7 @@
     color: rgb(255, 255, 255);
 }
 
-.button:hover .unity-text-element{
+.button:focus .unity-text-element{
     color: rgb(19, 19, 19);
 }
 
@@ -52,7 +52,7 @@
     -unity-font-definition: url('project://database/Assets/Fonts/Cocogoose%20Pro-trial%20SDF.asset?fileID=11400000&guid=860a62888bf5f2842ac8970de2994714&type=2#Cocogoose Pro-trial SDF');
 }
 
-.button:hover {
+.button:focus {
     padding-left: 100px;
     padding-right: 30px;
     background-color: rgb(255, 247, 247);
@@ -89,7 +89,7 @@
     rotate: -1deg;
 }
 
-.button__vertical:hover {
+.button__vertical:focus {
     background-color: rgb(255, 247, 247);
     color: rgb(19, 19, 19);
     scale: 1.2 1.2;
