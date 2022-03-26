@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public static class UIExtensions
@@ -22,5 +24,27 @@ public static class UIExtensions
 
 
 	public static void BindValue(this Button button, Action action) => button.RegisterCallback<ClickEvent>(_ => action?.Invoke());
-	
+
+	public static void Activate(this IMenuHandler instance, bool shouldDisplay)
+	{
+		instance?.Element?.Display(shouldDisplay);
+		instance?.Element?.Query<BindableElement>().First()?.Focus();
+	}
+
+	public static void BindDirection(this BindableElement element, VisualElement target, params NavigationMoveEvent.Direction[] dirs)
+	{
+		if (element == null)
+		{
+			return;
+		}
+		element.RegisterCallback<NavigationMoveEvent>(e =>
+		{
+			if (dirs?.ToList().Contains(e.direction) ?? false)
+			{
+				e.PreventDefault();
+				target?.Focus();
+				Debug.Log($"Setting focus to {target.name}");
+			}
+		});
+	}
 }

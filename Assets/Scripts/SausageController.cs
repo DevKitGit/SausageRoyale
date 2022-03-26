@@ -16,7 +16,7 @@ public class SausageController : MonoBehaviour
     [SerializeField] private float moveForceScale = 1f;
     private void FixedUpdate()
     {
-        if (_playerController.m_PlayerInput.currentActionMap.name != "Player") return;
+        if (_playerController.PlayerInput.currentActionMap.name != "Player") return;
         if (applyStartForce)
         {
             startRb.AddForce(new(startForceVector.x*moveForceScale, 0, startForceVector.y*moveForceScale));
@@ -65,7 +65,7 @@ public class SausageController : MonoBehaviour
     {
         if (callbackContext.performed)
         {
-            _playerController.m_PlayerInput.SwitchCurrentActionMap("UI");
+            _playerController.PlayerInput.SwitchCurrentActionMap("UI");
         }
     }
 }

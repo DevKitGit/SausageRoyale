@@ -1,18 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UIElements;
 
 public class UI : MonoBehaviour
 {
-	private VisualElement _root;
-
-	private VisualElement _mainMenu;
-	private VisualElement _options;
-	private VisualElement _characterSelect;
-
-	private Stack<VisualElement> _history = new Stack<VisualElement>();
+	public VisualElement Root { get; private set; }
+	public Button NavigationButton { get; private set; }
+	private List<IMenuHandler> MenuHandlers { get; } = new();
+	private readonly Stack<IMenuHandler> _history = new();
 	private VisualElement _navigation;
+
+
+	public void NavigateTo<T>() where T : IMenuHandler
+	{
+		var menu = GetHandler<T>();
+		if (_history.TryPeek(out var last))
+		{
+			last.Activate(false);
+		}
+		_history.Push(menu);
+		menu.Activate(true);
+		_navigation?.Display(menu.HasNavigation);
+	}
 
 	private void Back()
 	{
@@ -22,56 +35,59 @@ public class UI : MonoBehaviour
 		}
 
 		var last = _history.Pop();
-		last.Display(false);
+		last.Activate(false);
 
 		var current = _history.Peek();
-		current.Display(true);
+		current.Activate(true);
 		
 		_navigation?.Display(_history.Count > 1);
-		current.GetFirstOfType<Button>()?.Focus();
+		current.Element.GetFirstOfType<Button>()?.Focus();
 	}
 
-	private void NavigateTo(VisualElement menu)
-	{
-		if (_history.Count == 0)
-		{
-			_navigation?.Display(false);
-			_history.Push(menu);
-			return;
-		}
-
-		var last = _history.Peek();
-		last.Display(false);
-		_history.Push(menu);
-		menu.Display(true);
-		_navigation?.Display(true);
-		menu.GetFirstOfType<Button>()?.Focus();
-	}
-	
 	private void Awake()
 	{
-		_root = GetComponent<UIDocument>().rootVisualElement;
-		_mainMenu = _root.Q("main-menu");
-		_options = _root.Q("options-menu");
-		_characterSelect = _root.Q("character-select-menu");
+		Root = GetComponent<UIDocument>().rootVisualElement;
 
-		_mainMenu.Display(true);
-		_options.Display(false);
-		_characterSelect.Display(false);
+		SetupNavigation();
+		SetupHandlers();
 
-		_navigation = _root.Q("navigation");
-		var navigationBack = _root.Q<Button>("back");
-		navigationBack.BindValue(Back);
-		
-		var optionsButton = _mainMenu.Q<Button>("options");
-		optionsButton.BindValue(() => NavigateTo(_options));
-		var newGameButton = _mainMenu.Q<Button>("newgame");
-		newGameButton.BindValue(() => NavigateTo(_characterSelect));
-		var exitButton = _mainMenu.Q<Button>("exit");
-		exitButton.BindValue(Application.Quit);
-
-
-		NavigateTo(_mainMenu);
+		NavigateTo<MainMenuHandler>();
 	}
 
+	private IMenuHandler GetHandler<T>() where T : IMenuHandler => MenuHandlers.OfType<T>().FirstOrDefault();
+
+
+	private void SetupHandlers()
+	{
+		foreach (Type type in GetType().Assembly.GetTypes().Where(t => !t.IsAbstract && typeof(IMenuHandler).IsAssignableFrom(t)))
+		{
+			MenuHandlers.Add(Activator.CreateInstance(type) as IMenuHandler);
+		}
+		
+		foreach (IMenuHandler menuHandler in MenuHandlers)
+		{
+			menuHandler.Bind(this);
+			menuHandler.Activate(false);
+		}
+	}
+
+	private void SetupNavigation()
+	{
+		_navigation = Root.Q("navigation");
+		NavigationButton = Root.Q<Button>("back");
+		NavigationButton.BindValue(Back);
+		
+		_navigation.RegisterCallback<NavigationMoveEvent>(e =>
+		{
+			var target = e.direction switch
+			{
+				NavigationMoveEvent.Direction.Up =>  _history.Peek().Element.Query<BindableElement>().Last(), 
+				NavigationMoveEvent.Direction.Down => _history.Peek().Element.Query<BindableElement>().First(), 
+				_ => null,
+			};
+			
+			target?.Focus();
+			e.PreventDefault();
+		});
+	}
 }
