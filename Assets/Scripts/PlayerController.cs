@@ -18,11 +18,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 endForceVector = Vector3.zero;
     private bool applyStartForce = false;
     private bool applyEndForce = false;
-    
     public PlayerInput.ActionEvent
         UiNavigate,
-        UiSelect,
-        UiBack,
+        UISubmit,
+        UiCancel,
         PlayerJump,
         PlayerMoveA,
         PlayerMoveB,
@@ -38,6 +37,7 @@ public class PlayerController : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (_playerInput.currentActionMap.name != "Player") return;
         if (applyStartForce)
         {
             startRb.AddForce(new(startForceVector.x*moveForceScale, 0, startForceVector.y*moveForceScale));
@@ -51,24 +51,23 @@ public class PlayerController : MonoBehaviour
     
     void SetupEvents()
     {
-        var actionEvent = _playerInput.actionEvents;
-        UiNavigate = actionEvent.First(e => e.actionName.Contains("UI/Navigate"));
-        UiSelect = actionEvent.First(e => e.actionName.Contains("UI/Select"));
-        UiBack = actionEvent.First(e => e.actionName.Contains("UI/Back"));
-        PlayerJump = actionEvent.First(e => e.actionName.Contains("Player/Jump"));
-        PlayerMoveA = actionEvent.First(e => e.actionName.Contains("Player/MoveA"));
-        PlayerMoveB = actionEvent.First(e => e.actionName.Contains("Player/MoveB"));
-        PlayerGrabA = actionEvent.First(e => e.actionName.Contains("Player/GrabA"));
-        PlayerGrabB = actionEvent.First(e => e.actionName.Contains("Player/GrabB"));
-        PlayerPause = actionEvent.First(e => e.actionName.Contains("Player/Pause"));
+        var actionEvents = _playerInput.actionEvents;
+        UiNavigate = actionEvents.First(e => e.actionName.Contains("UI/Navigate"));
+        UISubmit = actionEvents.First(e => e.actionName.Contains("UI/Submit"));
+        UiCancel = actionEvents.First(e => e.actionName.Contains("UI/Cancel"));
+        PlayerJump = actionEvents.First(e => e.actionName.Contains("Player/Jump"));
+        PlayerMoveA = actionEvents.First(e => e.actionName.Contains("Player/MoveA"));
+        PlayerMoveB = actionEvents.First(e => e.actionName.Contains("Player/MoveB"));
+        PlayerGrabA = actionEvents.First(e => e.actionName.Contains("Player/GrabA"));
+        PlayerGrabB = actionEvents.First(e => e.actionName.Contains("Player/GrabB"));
+        PlayerPause = actionEvents.First(e => e.actionName.Contains("Player/Pause"));
         PlayerJump.AddListener(Jump);
         PlayerMoveA.AddListener(MoveStartRb);
         PlayerMoveB.AddListener(MoveEndRb);
-        PlayerPause.AddListener(SetActionMap);
-        
+        PlayerPause.AddListener(EnableUIActionMap);
     }
-
-    private void SetActionMap(InputAction.CallbackContext callbackContext)
+    
+    private void EnableUIActionMap(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
         {
@@ -100,6 +99,4 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
-
 }
