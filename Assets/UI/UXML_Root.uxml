@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS_Styles.uss?fileID=7433441132597879392&amp;guid=4754db1e383ca1840a08995a8f176a45&amp;type=3#USS_Styles" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="main-menu" style="flex-grow: 1; background-color: rgb(238, 73, 73);">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
+                <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
+                    <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="newgame" class="button" />
+                    <ui:Button text="OPTIONS" display-tooltip-when-elided="true" name="options" tabindex="1" class="button" />
+                    <ui:Button text="EXIT" display-tooltip-when-elided="true" name="exit" tabindex="2" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="options-menu" style="flex-grow: 1; background-color: rgb(238, 100, 73);">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
+                <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
+                    <ui:Toggle label="SOUND EFFECTS" name="sfx" class="button" />
+                    <ui:Toggle label="MUSIC" name="music" tabindex="1" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="character-select-menu" style="flex-grow: 1; background-color: rgb(231, 110, 176);">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: column-reverse; align-items: center;">
+                <ui:Label text="CHOOSE A SAUSAGE" display-tooltip-when-elided="true" class="header text" />
+                <ui:VisualElement style="align-items: center; justify-content: center; padding-left: 25px; padding-right: 25px; padding-top: 25px; padding-bottom: 25px; flex-direction: row;">
+                    <ui:Button display-tooltip-when-elided="true" name="character-1" enable-rich-text="false" class="button__vertical" />
+                    <ui:Button display-tooltip-when-elided="true" name="character-2" enable-rich-text="false" class="button__vertical" />
+                    <ui:Button display-tooltip-when-elided="true" name="character-3" enable-rich-text="false" class="button__vertical" />
+                    <ui:Button display-tooltip-when-elided="true" name="character-4" enable-rich-text="false" class="button__vertical" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="navigation" style="align-items: flex-end; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 25px; padding-right: 25px; padding-top: 5px; padding-bottom: 5px; flex-shrink: 0; background-color: rgb(0, 0, 0); display: none;">
+            <ui:VisualElement style="max-width: 200px;">
+                <ui:Button text="BACK" display-tooltip-when-elided="true" name="back" class="button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
