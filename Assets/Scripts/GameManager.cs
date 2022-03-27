@@ -28,13 +28,14 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance { get; private set; }
 
-	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 	private static void OnGameStart()
 	{
 		var instance = new GameObject("GAME MANAGER").AddComponent<GameManager>();
 		DontDestroyOnLoad(instance);
 		Instance = instance;
 		Instance._assets = Resources.Load<GameAssets>("GameAssets");
+		Debug.Log(Instance.gameObject);
 	}
 
 	public static void LoadMainScene()

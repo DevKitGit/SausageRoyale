@@ -38,21 +38,29 @@ public class InputManager : MonoBehaviour
 		OnPlayerJoin?.Invoke(controller);
 	}
 
-	public static void EnableJoining()
+	public static void RemovePlayer(PlayerController controller)
 	{
-		Instance.PlayerInputManager.EnableJoining();
+		PlayerControllers.Remove(controller);
+		Destroy(controller.gameObject);
 	}
+
+	private static void RemoveAllPlayers()
+	{
+		foreach (var playerController in PlayerControllers)
+		{
+			Destroy(playerController.gameObject);
+		}
+		PlayerControllers.Clear();
+	}
+	
+	public static void EnableJoining() => Instance.PlayerInputManager.EnableJoining();
 
 	public static void DisableJoining(bool deletePlayers)
 	{
 		Instance.PlayerInputManager.DisableJoining();
 		if (deletePlayers)
 		{
-			foreach (var playerController in PlayerControllers)
-			{
-				Destroy(playerController.gameObject);
-			}
-			PlayerControllers.Clear();
+			RemoveAllPlayers();
 		}
 	}
 

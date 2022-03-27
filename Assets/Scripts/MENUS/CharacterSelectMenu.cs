@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 
 public class CharacterSelectMenu : IMenuHandler
@@ -86,6 +87,10 @@ public class CharacterSelectMenu : IMenuHandler
 			_ui.SetNavbarText("Press a button to join");
 			_countDown = null;
 		}
+		else
+		{
+			visualPlayer.Reset();
+		}
 	}
 
 	void ProcessLockIn(VisualPlayer visualPlayer, InputAction.CallbackContext context)
@@ -100,7 +105,7 @@ public class CharacterSelectMenu : IMenuHandler
 		
 		if (_countDown == null && LockedInCount == ValidCount && ValidCount > 1)
 		{
-			GameManager.LoadMainScene();
+
 			_countDown = GameManager.Start(DoCountDown());
 		}
 	}
@@ -108,7 +113,6 @@ public class CharacterSelectMenu : IMenuHandler
 	IEnumerator DoCountDown()
 	{
 		var seconds = 3;
-		var interval = .5f;
 		var failed = false;
 		
 		for (int i = 0; i < seconds; i++)
@@ -118,7 +122,6 @@ public class CharacterSelectMenu : IMenuHandler
 				0 => "THREE",
 				1 => "TWO",
 				2 => "ONE",
-				3 => "0",
 				_ => "throw new ArgumentOutOfRangeException()",
 			};
 			
@@ -191,6 +194,19 @@ public class CharacterSelectMenu : IMenuHandler
 	{
 		private const string LockedInString = "player__locked-in";
 
+		public void Reset()
+		{
+			Element.SetEnabled(false);
+			Element.style.backgroundImage = null;
+			if (Controller == null)
+			{
+				return;
+			}
+			InputManager.RemovePlayer(Controller);
+			InputManager.Instance.InputSystem.enabled = false;
+			InputManager.Instance.InputSystem.enabled = true;
+		}
+		
 		public bool IsValid => Controller != null;
 		public PlayerController Controller { get; set; }
 		public VisualElement Element { get; set; }

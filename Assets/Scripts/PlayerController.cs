@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         SetupEvents();
         InputManager.AddPlayer(this);
+        PlayerInput.neverAutoSwitchControlSchemes = true;
     }
     
     void SetupEvents()

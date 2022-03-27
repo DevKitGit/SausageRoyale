@@ -20,6 +20,7 @@ public class SplashScreenExample : MonoBehaviour
 			SplashScreen.Draw();
 			yield return null;
 		}
+		Destroy(gameObject);
 	}
 
 	private void OnDisable()

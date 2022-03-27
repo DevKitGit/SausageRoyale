@@ -4,13 +4,14 @@ using UnityEngine.UIElements;
 
 public class MainMenuHandler : IMenuHandler
 {
+	private UI _ui;
 	public bool HasNavigation => false;
 	public VisualElement Element { get; set; }
 
 	public IMenuHandler Bind(UI ui)
 	{
 		Element = ui.Root.Q("main-menu");
-		
+		_ui = ui;
 		var optionsButton = Element.Q<Button>("options");
 		optionsButton.BindValue(ui.NavigateTo<OptionsMenu>);
 		var newGameButton = Element.Q<Button>("newgame");
@@ -23,7 +24,7 @@ public class MainMenuHandler : IMenuHandler
 
 	public void OnEnter()
 	{
-		
+		_ui.SetNavbarText("Have a nice day~");
 	}
 
 	public void OnExit()

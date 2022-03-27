@@ -14,11 +14,10 @@ public class UI : MonoBehaviour
 	public Button NavigationButton { get; private set; }
 	private List<IMenuHandler> MenuHandlers { get; } = new();
 	private readonly Stack<IMenuHandler> _history = new();
-	private VisualElement _navigation;
 
 	public void SetNavbarText(string text = "")
 	{
-		var label = _navigation.Q<Label>("navBarLabel");
+		var label = Root.Q<Label>("navBarLabel");
 		if (label != null)
 		{
 			label.text = text.ToUpper();
@@ -42,7 +41,7 @@ public class UI : MonoBehaviour
 
 		_history.Push(menu);
 		menu.Activate(true);
-		_navigation?.Display(menu.HasNavigation);
+		NavigationButton?.Display(menu.HasNavigation);
 		
 	}
 
@@ -54,7 +53,7 @@ public class UI : MonoBehaviour
 		}
 		_history.Pop().Activate(false);
 		_history.Peek().Activate(true);
-		_navigation?.Display(_history.Count > 1);
+		NavigationButton?.Display(_history.Count > 1);
 		AudioManager.Play("sizzle-1");
 	}
 
@@ -124,7 +123,7 @@ public class UI : MonoBehaviour
 		}
 		
 		InputManager.Instance.InputSystem.cancel.action.performed += OnActionOnperformed;
-		_navigation = Root.Q("navigation");
+		var _navigation = Root.Q("navigation");
 		NavigationButton = Root.Q<Button>("back");
 		NavigationButton.BindValue(Back);
 		
