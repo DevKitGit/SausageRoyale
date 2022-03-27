@@ -7,13 +7,10 @@ public class TextManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _countdown;
 
+    public bool doneCounting = false;
     // Start is called before the first frame update
-    private void Start()
-    {
-        StartCoroutine(UpdateCountdown());
-    }
-	
-    private IEnumerator UpdateCountdown()
+
+    public IEnumerator UpdateCountdown()
     {
         yield return new WaitForSeconds(1);
         var counter = 3;
@@ -26,5 +23,6 @@ public class TextManager : MonoBehaviour
         _countdown.SetText("SAUSAGE TIME!");
         yield return new WaitForSeconds(1);
         _countdown.SetText("");
+        doneCounting = true;
     }
 }
