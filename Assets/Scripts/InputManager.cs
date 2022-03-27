@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 		Instance = this;
-
+		OnPlayerJoin = null;
 	}
 
 	public static void AddPlayer(PlayerController controller)

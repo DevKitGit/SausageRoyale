@@ -67,7 +67,7 @@ public class UI : MonoBehaviour
 
 	private void SetupNavigation()
 	{
-		void OnBackPerformed(InputAction.CallbackContext context)
+		void OnActionOnperformed(InputAction.CallbackContext context)
 		{
 			foreach (PlayerController playerController in InputManager.PlayerControllers)
 			{
@@ -79,8 +79,8 @@ public class UI : MonoBehaviour
 			
 			Back();
 		}
-
-		InputManager.Instance.InputSystem.cancel.action.performed += OnBackPerformed;
+		
+		InputManager.Instance.InputSystem.cancel.action.performed += OnActionOnperformed;
 		_navigation = Root.Q("navigation");
 		NavigationButton = Root.Q<Button>("back");
 		NavigationButton.BindValue(Back);

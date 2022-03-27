@@ -9,7 +9,7 @@ public class Sausage : ScriptableObject
 	public GameObject Prefab { get; private set; }
 	
 	[field:SerializeField]
-	public Color Color { get; private set; } 
+	public Color Color { get; set; } 
 	
 	[field:SerializeField]
 	public Texture2D Texture { get; private set; } 

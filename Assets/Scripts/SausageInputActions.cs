@@ -29,12 +29,12 @@ public partial class @SausageInputActions : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""e2a2d5ac-59b8-406e-95d6-bd7601665aca"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Hold(duration=0.04)"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Submit"",
@@ -664,294 +664,6 @@ public partial class @SausageInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""LockedIn"",
-            ""id"": ""00e4549b-99c1-42e4-8901-3b05986d84d5"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""bbb23860-110b-4e7d-bea0-1aa63b986104"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Back"",
-                    ""type"": ""Button"",
-                    ""id"": ""a7c1e560-972b-4f61-9a6a-74825d306938"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Continue"",
-                    ""type"": ""Button"",
-                    ""id"": ""7fd58444-81fe-41a0-9164-5646c6885d93"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""ade6df58-599a-4274-bbf8-1e9added450f"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""89fd5da3-f741-4d76-9c1b-7944ea565199"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f6a12211-df62-4ce0-ab43-fbe68d9b64e9"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""496dc6c8-beb6-4571-b824-ea333a37766a"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""710e301e-36c2-48a4-bf5a-ba03ea37d4cb"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""0f5a32ab-51ca-47ae-9821-33fe700b85e7"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""c9093e46-587d-4611-8f28-1d39f9382c0c"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""17584390-70ea-488d-9b17-edf1235c46bc"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""91fb643e-45a3-4769-91f7-148040f24723"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0a68ec07-dcb2-4d13-8dd6-238fe06af7d8"",
-                    ""path"": ""<Gamepad>/dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Joystick"",
-                    ""id"": ""f202b412-1f14-45b5-ad7a-fbc4437ddbaa"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""995f9dc3-540f-4e29-9de9-59a5e402ee20"",
-                    ""path"": ""<Joystick>/stick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""48ff009f-fc56-4a6c-8248-04f0d93b2b5a"",
-                    ""path"": ""<Joystick>/stick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""44407873-439c-4a7a-98d9-54822a3b4e76"",
-                    ""path"": ""<Joystick>/stick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""c38d23aa-d200-4f44-b615-4ac20be4812c"",
-                    ""path"": ""<Joystick>/stick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""a7711d46-9d74-4dc8-a5aa-eb367cb396de"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""43a17ba9-dd09-4ace-ac0e-e699b93adddd"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""92798c3f-b913-419e-8fe6-3453d2b76dfd"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""75a48ee2-b3dc-4dee-84c5-32edb9f58a94"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0cd6727b-2724-4559-b9a1-568ee579d129"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9382adcd-6463-4205-9d53-32f4edb9cc4d"",
-                    ""path"": ""*/{Cancel}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60cb5b36-6a43-4310-8eea-0c6afc34d8e8"",
-                    ""path"": ""*/{Submit}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Continue"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4b319859-40f7-4a3f-b621-d2abe8be2d94"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Continue"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -977,11 +689,6 @@ public partial class @SausageInputActions : IInputActionCollection2, IDisposable
         m_Player_GrabB = m_Player.FindAction("GrabB", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        // LockedIn
-        m_LockedIn = asset.FindActionMap("LockedIn", throwIfNotFound: true);
-        m_LockedIn_Move = m_LockedIn.FindAction("Move", throwIfNotFound: true);
-        m_LockedIn_Back = m_LockedIn.FindAction("Back", throwIfNotFound: true);
-        m_LockedIn_Continue = m_LockedIn.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1223,55 +930,6 @@ public partial class @SausageInputActions : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // LockedIn
-    private readonly InputActionMap m_LockedIn;
-    private ILockedInActions m_LockedInActionsCallbackInterface;
-    private readonly InputAction m_LockedIn_Move;
-    private readonly InputAction m_LockedIn_Back;
-    private readonly InputAction m_LockedIn_Continue;
-    public struct LockedInActions
-    {
-        private @SausageInputActions m_Wrapper;
-        public LockedInActions(@SausageInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_LockedIn_Move;
-        public InputAction @Back => m_Wrapper.m_LockedIn_Back;
-        public InputAction @Continue => m_Wrapper.m_LockedIn_Continue;
-        public InputActionMap Get() { return m_Wrapper.m_LockedIn; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(LockedInActions set) { return set.Get(); }
-        public void SetCallbacks(ILockedInActions instance)
-        {
-            if (m_Wrapper.m_LockedInActionsCallbackInterface != null)
-            {
-                @Move.started -= m_Wrapper.m_LockedInActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_LockedInActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_LockedInActionsCallbackInterface.OnMove;
-                @Back.started -= m_Wrapper.m_LockedInActionsCallbackInterface.OnBack;
-                @Back.performed -= m_Wrapper.m_LockedInActionsCallbackInterface.OnBack;
-                @Back.canceled -= m_Wrapper.m_LockedInActionsCallbackInterface.OnBack;
-                @Continue.started -= m_Wrapper.m_LockedInActionsCallbackInterface.OnContinue;
-                @Continue.performed -= m_Wrapper.m_LockedInActionsCallbackInterface.OnContinue;
-                @Continue.canceled -= m_Wrapper.m_LockedInActionsCallbackInterface.OnContinue;
-            }
-            m_Wrapper.m_LockedInActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Back.started += instance.OnBack;
-                @Back.performed += instance.OnBack;
-                @Back.canceled += instance.OnBack;
-                @Continue.started += instance.OnContinue;
-                @Continue.performed += instance.OnContinue;
-                @Continue.canceled += instance.OnContinue;
-            }
-        }
-    }
-    public LockedInActions @LockedIn => new LockedInActions(this);
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
@@ -1294,11 +952,5 @@ public partial class @SausageInputActions : IInputActionCollection2, IDisposable
         void OnGrabB(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-    }
-    public interface ILockedInActions
-    {
-        void OnMove(InputAction.CallbackContext context);
-        void OnBack(InputAction.CallbackContext context);
-        void OnContinue(InputAction.CallbackContext context);
     }
 }

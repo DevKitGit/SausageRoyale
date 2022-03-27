@@ -1,6 +1,5 @@
 ﻿public enum InputMode
 {
 	UI,
-	Player,
-	LockedIn,
+	Player
 }

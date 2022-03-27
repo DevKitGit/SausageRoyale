@@ -148,5 +148,20 @@
 
 .player__locked-in {
     translate: 0 -30px;
-    opacity: 0.8;
+}
+
+.player__1.player__locked-in {
+    -unity-background-image-tint-color: rgb(226, 58, 104);
+}
+
+.player__2.player__locked-in {
+    -unity-background-image-tint-color: rgb(69, 248, 113);
+}
+
+.player__3.player__locked-in {
+    -unity-background-image-tint-color: rgb(90, 215, 255);
+}
+
+.player__4.player__locked-in {
+    -unity-background-image-tint-color: rgb(133, 61, 243);
 }

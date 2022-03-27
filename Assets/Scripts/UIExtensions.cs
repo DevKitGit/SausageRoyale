@@ -41,7 +41,7 @@ public static class UIExtensions
 		action.Invoke();
 	}
 
-	public static void BindDirection(this BindableElement element, VisualElement target, params NavigationMoveEvent.Direction[] dirs)
+	public static void BindDirection(this VisualElement element, VisualElement target, params NavigationMoveEvent.Direction[] dirs)
 	{
 		if (element == null)
 		{
@@ -49,6 +49,11 @@ public static class UIExtensions
 		}
 		element.RegisterCallback<NavigationMoveEvent>(e =>
 		{
+			if (InputManager.PlayerControllers.Any(c => c.Devices.Contains(InputManager.Instance.InputSystem.move.action.activeControl?.device)))
+			{
+				e.PreventDefault();
+				return;
+			}
 			if (dirs?.ToList().Contains(e.direction) ?? false)
 			{
 				e.PreventDefault();
