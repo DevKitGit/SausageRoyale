@@ -30,7 +30,7 @@ public class TextManager : MonoBehaviour
     public IEnumerator DoGameOver()
     {
         _countdown.SetText($"GAME OVER!");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         doneDeclaringWinner = true;
     }
     public IEnumerator DoWinner(string name)

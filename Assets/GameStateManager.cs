@@ -8,18 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     private TextManager _textManager;
-
-    [SerializeField]
-    private GameObject hyggePrefab;
-
-    [SerializeField]
-    private List<Transform> spawnPoints;
-
-    [SerializeField]
-    private List<SausageController> spawnedSausages;
-
-    [SerializeField]
-    private List<SausageController> sortedSausageWinners;
+    [SerializeField] private GameObject hyggePrefab;
+    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] private List<SausageController> spawnedSausages;
+    [SerializeField] public List<string> sortedSausageWinners;
 
 
     public GameState gameState;
@@ -28,7 +20,8 @@ public class GameStateManager : MonoBehaviour
     {
         Starting,
         Playing,
-        GameOver
+        GameOver,
+        LoadWinScene
     }
 
     // Start is called before the first frame update
@@ -37,7 +30,7 @@ public class GameStateManager : MonoBehaviour
         gameState = GameState.Starting;
         _textManager = gameObject.GetComponent<TextManager>();
         SetupGame();
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
 
     private void SetupGame()
@@ -46,8 +39,12 @@ public class GameStateManager : MonoBehaviour
         for (var index = 0; index < InputManager.PlayerControllers.Count; index++)
         {
             var playerController = InputManager.PlayerControllers[index];
-            SausageController sausageController = Instantiate(playerController.Sausage.Prefab.gameObject, spawnPoints[index].position, quaternion.identity).gameObject.GetComponent<SausageController>();
-            Canvas Canvas = Instantiate(hyggePrefab, sausageController.GetComponentsInChildren<SphereCollider>()[5].transform.position, hyggePrefab.transform.rotation).GetComponent<Canvas>();
+            SausageController sausageController =
+                Instantiate(playerController.Sausage.Prefab.gameObject, spawnPoints[index].position,
+                    quaternion.identity).gameObject.GetComponent<SausageController>();
+            Canvas Canvas = Instantiate(hyggePrefab,
+                sausageController.GetComponentsInChildren<SphereCollider>()[5].transform.position,
+                hyggePrefab.transform.rotation).GetComponent<Canvas>();
             spawnedSausages.Add(sausageController);
 
             sausageController.SetPlayerController(playerController.PlayerInput);
@@ -62,7 +59,6 @@ public class GameStateManager : MonoBehaviour
         if (gameState == GameState.Starting && _textManager.doneCounting)
         {
             gameState = GameState.Playing;
-            Debug.Log("start game");
             spawnedSausages.ForEach(s => s.applyFrying = true);
             //start playing sizzling sound here.
         }
@@ -74,7 +70,7 @@ public class GameStateManager : MonoBehaviour
             {
                 StartCoroutine(_textManager.DoGameOver());
                 winner = spawnedSausages[0];
-                sortedSausageWinners.Add(winner);
+                sortedSausageWinners.Add(winner.name.Split("(")[0]);
                 spawnedSausages.Remove(winner);
                 gameState = GameState.GameOver;
                 return;
@@ -84,14 +80,15 @@ public class GameStateManager : MonoBehaviour
             if (winner != null)
             {
                 StartCoroutine(_textManager.DoWinner(winner.name));
-                sortedSausageWinners.Add(winner);
+                sortedSausageWinners.Add(winner.name.Split("(")[0]);
                 spawnedSausages.Remove(winner);
             }
         }
 
         if (gameState == GameState.GameOver && _textManager.doneDeclaringWinner)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(2);
+            gameState = GameState.LoadWinScene;
             //scene change, use sortedSausageWinners
         }
     }
@@ -102,7 +99,9 @@ public class GameStateManager : MonoBehaviour
         for (var index = 0; index < InputManager.PlayerControllers.Count; index++)
         {
             var playerController = InputManager.PlayerControllers[index];
-            SausageController sausageController = Instantiate(playerController.Sausage.Prefab.gameObject, spawnPoints[index].position, quaternion.identity).gameObject.GetComponent<SausageController>();
+            SausageController sausageController =
+                Instantiate(playerController.Sausage.Prefab.gameObject, spawnPoints[index].position,
+                    quaternion.identity).gameObject.GetComponent<SausageController>();
         }
     }
 }
