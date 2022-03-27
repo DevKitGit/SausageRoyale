@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SausageController : MonoBehaviour
 {
@@ -17,18 +18,20 @@ public class SausageController : MonoBehaviour
     private Vector3 endForceVector = Vector3.zero;
 
     [Header("Sausage stats")] 
-    [SerializeField] private int hyggeWinCondition = 100;
+    [SerializeField] private float hyggeWinCondition = 100f;
 
-    [SerializeField, Range(0f, 1000f)] private float hyggeAmount = 0f;
+    [SerializeField, Range(0f, 1000f)] public float hyggeAmount = 0f;
     [SerializeField] private float secondsPerHygge = 1;
     [SerializeField] private float hyggePerTick = 1;
-    [SerializeField] private bool applyFrying = false;
+    [SerializeField] public bool applyFrying = false, doneFrying = false;
     
     [SerializeField] public bool inHotspot = false;
     [SerializeField,Range(1f,4f)] public float HotspotMultiplier = 1f;
     private float time;
     private PlayerController _playerController;
-    
+
+    [SerializeField] private Slider _slider;
+    [SerializeField] private Image sliderImage, sliderBackgroundImage;
     private void ToggleFrying(bool frying)
     {
         applyFrying = frying;
@@ -37,11 +40,13 @@ public class SausageController : MonoBehaviour
     private void Start()
     {
         PlayerInputManager.instance.onPlayerJoined += SetPlayerController;
+        _slider.maxValue = hyggeWinCondition;
+        _slider.value = hyggeAmount;
     }
 
     private void FixedUpdate()
     {
-        if (hyggeAmount >= hyggeWinCondition || !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/) return;
+        if (doneFrying || !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/) return;
 
         if (applyStartForce)
         {
@@ -60,6 +65,7 @@ public class SausageController : MonoBehaviour
         {
             inHotspot = false;
             applyFrying = false;
+            doneFrying = true;
             return;
         }
         if (applyFrying && !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/)
@@ -68,6 +74,15 @@ public class SausageController : MonoBehaviour
             if (time >= secondsPerHygge) {
                 time = time - secondsPerHygge;
                 hyggeAmount += inHotspot ? hyggePerTick * HotspotMultiplier : hyggePerTick;
+                _slider.value = hyggeAmount;
+                
+                var sliderImageColor = sliderImage.color;
+                sliderImageColor.a = _slider.normalizedValue;
+                sliderImage.color = sliderImageColor;
+                
+                var sliderBackgroundImageColor = sliderBackgroundImage.color;
+                sliderBackgroundImageColor.a = _slider.normalizedValue;
+                sliderBackgroundImage.color = sliderBackgroundImageColor;
                 inHotspot = false;
             }
         }
