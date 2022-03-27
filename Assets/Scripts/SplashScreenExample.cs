@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 public class SplashScreenExample : MonoBehaviour
 {
+	private bool isStopping;
 	private IDisposable listener;
 
 	IEnumerator Start()
@@ -25,13 +26,21 @@ public class SplashScreenExample : MonoBehaviour
 
 	private void OnDisable()
 	{
-		listener?.Dispose();
+		Stop();
 	}
 
 	private void Stop()
 	{
-		SplashScreen.Stop(SplashScreen.StopBehavior.FadeOut);
-		listener.Dispose();
+		if (isStopping)
+		{
+			return;
+		}
+		isStopping = true;
+		if (!SplashScreen.isFinished)
+		{
+			SplashScreen.Stop(SplashScreen.StopBehavior.FadeOut);
+		}
+		listener?.Dispose();
 		InputManager.Instance.InputSystem.enabled = true;
 	}
 }

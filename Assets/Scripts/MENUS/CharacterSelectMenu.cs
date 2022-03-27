@@ -63,6 +63,7 @@ public class CharacterSelectMenu : IMenuHandler
 		var visualPlayer = _players.FirstOrDefault(e => e.Controller == null);
 		if (visualPlayer != null)
 		{
+			AudioManager.Play("squish-2");
 			visualPlayer.Controller = controller;
 			visualPlayer.Element.SetEnabled(true);
 			ProcessNavigation(visualPlayer, null);
@@ -79,10 +80,10 @@ public class CharacterSelectMenu : IMenuHandler
 			return;
 		}
 
+		AudioManager.Play("back-1");
 		if (visualPlayer.LockedIn)
 		{
 			visualPlayer.LockedIn = false;
-			AudioManager.Play("back-1");
 			GameManager.Stop(_countDown);
 			_ui.SetNavbarText("Press a button to join");
 			_countDown = null;
