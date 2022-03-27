@@ -29,14 +29,18 @@ public class TextManager : MonoBehaviour
     }
     public IEnumerator DoGameOver()
     {
+        yield return new WaitForSeconds(1);
         _countdown.SetText($"GAME OVER!");
         yield return new WaitForSeconds(3);
         doneDeclaringWinner = true;
     }
     public IEnumerator DoWinner(string name)
     {
-        _countdown.SetText($"{name} WON!");
-        yield return new WaitForSeconds(1);
-        _countdown.SetText("");
+        _countdown.SetText($"{name.Split("(")[0]} WON!");
+        yield return new WaitForSeconds(1.25f);
+        if (_countdown.text == $"{name.Split("(")[0]} WON!")
+        {
+            _countdown.SetText("");
+        }
     }
 }

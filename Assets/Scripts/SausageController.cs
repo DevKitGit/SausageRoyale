@@ -30,7 +30,7 @@ public class SausageController : MonoBehaviour
     private float time;
     private PlayerController _playerController;
 
-    [SerializeField] private Transform canvasFollowTransform;
+    [SerializeField] public Transform canvasFollowTransform;
     [SerializeField] public Canvas canvas;
     [SerializeField] public Slider _slider;
     [SerializeField] public Image sliderImage, sliderBackgroundImage;
@@ -62,6 +62,10 @@ public class SausageController : MonoBehaviour
 
     private void Update()
     {
+        if (canvas != null)
+        {
+            canvas.transform.position = canvasFollowTransform.transform.position;
+        }
         if (hyggeAmount >= hyggeWinCondition)
         {
             inHotspot = false;
@@ -93,10 +97,7 @@ public class SausageController : MonoBehaviour
                 inHotspot = false;
             }
         }
-        if (canvas != null)
-        {
-            canvas.transform.position = canvasFollowTransform.transform.position;
-        }
+
     }
 
     // Start is called before the first frame update

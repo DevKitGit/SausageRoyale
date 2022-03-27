@@ -41,10 +41,10 @@ public class GameStateManager : MonoBehaviour
             var playerController = InputManager.PlayerControllers[index];
             SausageController sausageController =
                 Instantiate(playerController.Sausage.Prefab.gameObject, spawnPoints[index].position,
-                    quaternion.identity).gameObject.GetComponent<SausageController>();
+                    Quaternion.Euler(90, 0,0)).gameObject.GetComponent<SausageController>();
             Canvas Canvas = Instantiate(hyggePrefab,
-                sausageController.GetComponentsInChildren<SphereCollider>()[5].transform.position,
-                hyggePrefab.transform.rotation).GetComponent<Canvas>();
+                sausageController.canvasFollowTransform.position,
+                Quaternion.Euler(90, 0,0)).GetComponent<Canvas>();
             spawnedSausages.Add(sausageController);
 
             sausageController.SetPlayerController(playerController.PlayerInput);
