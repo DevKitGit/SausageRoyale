@@ -26,6 +26,7 @@ public class UI : MonoBehaviour
 		_history.Push(menu);
 		menu.Activate(true);
 		_navigation?.Display(menu.HasNavigation);
+		AudioManager.PlayOneShot("squish-3");
 	}
 
 	private void Back()
@@ -37,6 +38,7 @@ public class UI : MonoBehaviour
 		_history.Pop().Activate(false);
 		_history.Peek().Activate(true);
 		_navigation?.Display(_history.Count > 1);
+		AudioManager.PlayOneShot("sizzle-1");
 	}
 
 	private void Start()
@@ -46,7 +48,41 @@ public class UI : MonoBehaviour
 		SetupNavigation();
 		SetupHandlers();
 		NavigateTo<MainMenuHandler>();
+
+		SetupAudio();
+
 	}
+
+	private void SetupAudio()
+	{
+		void Move(NavigationMoveEvent evt)
+		{
+			string clipName = evt.direction switch
+			{
+				NavigationMoveEvent.Direction.Up => "squish-1",
+				NavigationMoveEvent.Direction.Down => "squish-2",
+				_ => null,
+			};
+			if (clipName != null)
+			{
+				AudioManager.PlayOneShot(clipName);
+			}
+		}
+		
+		void Submit(NavigationSubmitEvent evt)
+		{
+			AudioManager.PlayOneShot("sizzle-1");
+		}
+		
+		void Cancel(NavigationCancelEvent evt)
+		{
+			AudioManager.PlayOneShot("back-1");
+		}
+		
+		Root.RegisterCallback<NavigationMoveEvent>(Move);
+	}
+
+
 
 	private IMenuHandler GetHandler<T>() where T : IMenuHandler => MenuHandlers.OfType<T>().FirstOrDefault();
 
