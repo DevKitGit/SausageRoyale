@@ -18,15 +18,20 @@ public class UI : MonoBehaviour
 
 	public void NavigateTo<T>() where T : IMenuHandler
 	{
+		if (_history.Count > 0)
+		{
+			AudioManager.Play("squish-3");
+		}
+
 		var menu = GetHandler<T>();
 		if (_history.TryPeek(out var last))
 		{
 			last.Activate(false);
 		}
+
 		_history.Push(menu);
 		menu.Activate(true);
 		_navigation?.Display(menu.HasNavigation);
-		AudioManager.Play("squish-3");
 	}
 
 	private void Back()
@@ -68,17 +73,7 @@ public class UI : MonoBehaviour
 				AudioManager.Play(clipName);
 			}
 		}
-		
-		void Submit(NavigationSubmitEvent evt)
-		{
-			AudioManager.Play("sizzle-1");
-		}
-		
-		void Cancel(NavigationCancelEvent evt)
-		{
-			AudioManager.Play("back-1");
-		}
-		
+
 		Root.RegisterCallback<NavigationMoveEvent>(Move);
 	}
 

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class AudioManager : MonoBehaviour
@@ -27,12 +28,9 @@ public class AudioManager : MonoBehaviour
 	{
 		_instance = null;
 		
-		var startMusic = Play("ben-sexy", looping:true);
-		startMusic.outputAudioMixerGroup = GameManager.Assets.Mixer.FindMatchingGroups("MenuSoundtrack").FirstOrDefault();
+		var startMusic = Play("ben-sexy", looping:true, "MenuSoundtrack");
+		var gameMusic = Play("erotic-sexy", looping:true, "IngameSoundtrack");
 		var uiSnap = GameManager.Assets.Mixer.FindSnapshot("MainMenu");
-
-		var gameMusic = Play("erotic-sexy", looping:true);
-		gameMusic.outputAudioMixerGroup = GameManager.Assets.Mixer.FindMatchingGroups("IngameSoundtrack").FirstOrDefault();
 
 		IEnumerator Routine()
 		{
@@ -41,9 +39,28 @@ public class AudioManager : MonoBehaviour
 		}
 
 		Instance.StartCoroutine(Routine());
+		
+		SceneManager.sceneLoaded +=SceneManagerOnsceneLoaded; 
 	}
-	
-	public static AudioSource Play(Audio audio, bool looping = false)
+
+	private static void SceneManagerOnsceneLoaded(Scene arg0, LoadSceneMode arg1)
+	{
+		string snapshot = arg0.buildIndex switch
+		{
+			0 => "MainMenu",
+			1 => "InGame",
+			2 => "PostGame",
+			_ => "MainMenu",
+		};
+
+		var snap = GameManager.Assets.Mixer.FindSnapshot(snapshot);
+		if (snap != null)
+		{
+			snap.TransitionTo(0.5f);
+		}
+	}
+
+	public static AudioSource Play(Audio audio, bool looping = false, string audioMixerGroup = "SFX")
 	{
 		if (audio == null)
 		{
@@ -57,6 +74,7 @@ public class AudioManager : MonoBehaviour
 		audioSource.volume = 1;
 		audioSource.Play();
 		audioSource.loop = looping;
+		audioSource.outputAudioMixerGroup = GameManager.Assets.Mixer.FindMatchingGroups(audioMixerGroup).FirstOrDefault();
 		DontDestroyOnLoad(audioSource.gameObject);
 		if(!looping)
 		{
@@ -66,7 +84,7 @@ public class AudioManager : MonoBehaviour
 		return audioSource;
 	}
 	
-	public static AudioSource Play(string name, bool looping = false)
+	public static AudioSource Play(string name, bool looping = false, string audioMixerGroup = "SFX")
 	{
 		var audio = GameManager.Assets.Audios.FirstOrDefault(a => a.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 		if (audio == null)
@@ -75,6 +93,6 @@ public class AudioManager : MonoBehaviour
 			return null;
 		}
 
-		return Play(audio, looping);
+		return Play(audio, looping, audioMixerGroup);
 	}
 }
