@@ -37,8 +37,12 @@ public class SausageController : MonoBehaviour
     
     private void Start()
     {
-        _slider.maxValue = hyggeWinCondition;
-        _slider.value = hyggeAmount;
+        if (_slider != null)
+        {
+            _slider.maxValue = hyggeWinCondition;
+            _slider.value = hyggeAmount;
+        }
+        
     }
 
     private void FixedUpdate()
@@ -72,25 +76,33 @@ public class SausageController : MonoBehaviour
                 time = time - secondsPerHygge;
                 hyggeAmount += inHotspot ? hyggePerTick * HotspotMultiplier : hyggePerTick;
                 _slider.value = hyggeAmount;
-                
-                var sliderImageColor = sliderImage.color;
-                sliderImageColor.a = _slider.normalizedValue;
-                sliderImage.color = sliderImageColor;
-                
-                var sliderBackgroundImageColor = sliderBackgroundImage.color;
-                sliderBackgroundImageColor.a = _slider.normalizedValue;
-                sliderBackgroundImage.color = sliderBackgroundImageColor;
+
+                if (sliderImage != null)
+                {
+                    var sliderImageColor = sliderImage.color;
+                    sliderImageColor.a = _slider.normalizedValue;
+                    sliderImage.color = sliderImageColor;
+                }
+
+                if (sliderBackgroundImage != null)
+                {
+                    var sliderBackgroundImageColor = sliderBackgroundImage.color;
+                    sliderBackgroundImageColor.a = _slider.normalizedValue;
+                    sliderBackgroundImage.color = sliderBackgroundImageColor;
+                }
                 inHotspot = false;
             }
         }
-        canvas.transform.position = canvasFollowTransform.transform.position;
+        if (canvas != null)
+        {
+            canvas.transform.position = canvasFollowTransform.transform.position;
+        }
     }
 
     // Start is called before the first frame update
     public void SetPlayerController(PlayerInput playerInput)
     {
         hasPlayerController = true;
-        Debug.Log("set");
         _playerController = playerInput.gameObject.GetComponent<PlayerController>();
         _playerController.PlayerJump.AddListener(Jump);
         _playerController.PlayerMoveA.AddListener(MoveStartRb);
