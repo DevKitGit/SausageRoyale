@@ -20,4 +20,13 @@ public class MainMenuHandler : IMenuHandler
 		
 		return this;
 	}
+
+	public void OnEnter()
+	{
+		
+	}
+
+	public void OnExit()
+	{
+	}
 }

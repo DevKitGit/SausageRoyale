@@ -8,5 +8,6 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu]
 public class GameAssets : ScriptableObject
 {
-	
+	[field:SerializeField]
+	public List<Sausage> Sausages { get; private set; }
 }

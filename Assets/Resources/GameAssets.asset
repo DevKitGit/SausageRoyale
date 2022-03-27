@@ -10,5 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 604b5609120db3d45803ed0379c16a93, type: 3}
-  m_Name: GAME EVENTS
+  m_Name: GameAssets
   m_EditorClassIdentifier: 
+  <Sausages>k__BackingField:
+  - {fileID: 11400000, guid: 9bb8050f6e4949440a62d081981c2764, type: 2}
+  - {fileID: 11400000, guid: 31f1be135fd50e045beeffa05a7fdd84, type: 2}
+  - {fileID: 11400000, guid: a5fcf9778c1174b4e9e4dfcba53bdc35, type: 2}
+  - {fileID: 11400000, guid: 9662cef787d5d164886c1e291c0914bf, type: 2}

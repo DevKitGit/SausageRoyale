@@ -235,9 +235,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5009175050442674341, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_AllowJoining
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009175050442674341, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009175050442674342, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
       propertyPath: m_Name
       value: INPUTMANAGER
       objectReference: {fileID: 0}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_MoveAction
+      value: 
+      objectReference: {fileID: 3710738434707379630, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_PointAction
+      value: 
+      objectReference: {fileID: 8311150953253405692, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_ActionsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_CancelAction
+      value: 
+      objectReference: {fileID: -2152827911867316463, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: -8090634633724786811, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_LeftClickAction
+      value: 
+      objectReference: {fileID: -3566049453367436951, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_RightClickAction
+      value: 
+      objectReference: {fileID: 1591761103598897643, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_MiddleClickAction
+      value: 
+      objectReference: {fileID: -4036017664748215131, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_ScrollWheelAction
+      value: 
+      objectReference: {fileID: -4847447323923906493, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_TrackedDevicePositionAction
+      value: 
+      objectReference: {fileID: 2756849875701233244, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
+    - target: {fileID: 8405669617023885933, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
+      propertyPath: m_TrackedDeviceOrientationAction
+      value: 
+      objectReference: {fileID: -4218545728185965771, guid: 449a1eb98a6fcf243aa5760d41273fc4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9492c0a80801eec4faf94d844c4eddd5, type: 3}
