@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d48427c9d864fd492425c087fcde222, type: 3}
-  m_Name: Weird
+  m_Name: Brown
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 3653864898888875033, guid: 1f8b536ee21a2e34987f5977916b0433, type: 3}
-  <Color>k__BackingField: {r: 0.3529412, g: 0.8431373, b: 1, a: 1}
-  <Texture>k__BackingField: {fileID: 2800000, guid: 611fc7424f940af489ef09f875c56769, type: 3}
+  <Prefab>k__BackingField: {fileID: 3629855611144027602, guid: 343341679b1953d42a235b600fb52566, type: 3}
+  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Texture>k__BackingField: {fileID: 2800000, guid: 68e04b92c13b95245838614d71f4bb36, type: 3}
