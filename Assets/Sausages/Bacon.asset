@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bacon
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 4704740429935443108, guid: b20558308c7ba0e4c8784811ab80673d, type: 3}
-  <Color>k__BackingField: {r: 0.52156866, g: 0.2392157, b: 0.95294124, a: 1}
+  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   <Texture>k__BackingField: {fileID: 2800000, guid: a34e38fe3041d3b4082f587e2dcb1b47, type: 3}

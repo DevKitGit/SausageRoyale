@@ -20,7 +20,7 @@ public class SpawnWinners : MonoBehaviour
         for (var index = 0; index < winners.Count; index++)
         {
             var sC = winners[index];
-            Instantiate(GameManager.Assets.Sausages.First(s => s.Prefab.name == sC).Prefab.gameObject,sortedspawnPoints[index].position,Quaternion.Euler(1,1,1));
+            Instantiate(GameManager.Assets.Sausages.First(s => s.Prefab.name == sC).Prefab.gameObject,sortedspawnPoints[index].position,Quaternion.Euler(-1,-1,-1));
         }
         StartCoroutine(ResetGame());
         
@@ -28,18 +28,17 @@ public class SpawnWinners : MonoBehaviour
 
     public IEnumerator ResetGame()
     {
-        int i = 10;
+        int i = 8;
         while (i != 0)
         {
             i--;
-            _textMeshProUGUI.SetText($"{winners[0]} WINS, Resetting in {i}");
+            _textMeshProUGUI.SetText($"{winners[0].ToUpper()} WINS! RESET IN {i}");
             yield return new WaitForSeconds(1);
         }
+        Destroy(InputManager.Instance.gameObject);
         SceneManager.LoadScene(0);
+        
     }
     // Update is called once per frame
-    void Update()
-    {
 
-    }
 }
