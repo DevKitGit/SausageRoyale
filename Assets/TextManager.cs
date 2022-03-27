@@ -8,11 +8,13 @@ public class TextManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _countdown;
 
     public bool doneCounting = false;
+
+    public bool doneDeclaringWinner = false;
     // Start is called before the first frame update
 
     public IEnumerator UpdateCountdown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         var counter = 3;
         while(counter > 0)
         {
@@ -24,5 +26,17 @@ public class TextManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         _countdown.SetText("");
         doneCounting = true;
+    }
+    public IEnumerator DoGameOver()
+    {
+        _countdown.SetText($"GAME OVER!");
+        yield return new WaitForSeconds(2);
+        doneDeclaringWinner = true;
+    }
+    public IEnumerator DoWinner(string name)
+    {
+        _countdown.SetText($"{name} WON!");
+        yield return new WaitForSeconds(1);
+        _countdown.SetText("");
     }
 }

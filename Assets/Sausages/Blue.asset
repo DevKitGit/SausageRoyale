@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d48427c9d864fd492425c087fcde222, type: 3}
-  m_Name: Standard
+  m_Name: Blue
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 3653864898888875033, guid: 1f8b536ee21a2e34987f5977916b0433, type: 3}
-  <Color>k__BackingField: {r: 0.8862746, g: 0.227451, b: 0.41176474, a: 1}
-  <Texture>k__BackingField: {fileID: 2800000, guid: 1701d30235d6ed348aa1fe8c476116f1, type: 3}
+  <Prefab>k__BackingField: {fileID: 1190769132258925314, guid: 09ea226129ec3364593412f213ba59a3, type: 3}
+  <Color>k__BackingField: {r: 0.3529412, g: 0.8431373, b: 1, a: 1}
+  <Texture>k__BackingField: {fileID: 2800000, guid: 611fc7424f940af489ef09f875c56769, type: 3}

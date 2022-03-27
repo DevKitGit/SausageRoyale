@@ -18,7 +18,7 @@ public class SausageController : MonoBehaviour
     private Vector3 endForceVector = Vector3.zero;
 
     [Header("Sausage stats")] 
-    [SerializeField] private float hyggeWinCondition = 100f;
+    [SerializeField] public float hyggeWinCondition = 100f;
 
     [SerializeField, Range(0f, 1000f)] public float hyggeAmount = 0f;
     [SerializeField] private float secondsPerHygge = 1;
@@ -30,23 +30,20 @@ public class SausageController : MonoBehaviour
     private float time;
     private PlayerController _playerController;
 
-    [SerializeField] private Slider _slider;
-    [SerializeField] private Image sliderImage, sliderBackgroundImage;
-    private void ToggleFrying(bool frying)
-    {
-        applyFrying = frying;
-    }
-
+    [SerializeField] private Transform canvasFollowTransform;
+    [SerializeField] public Canvas canvas;
+    [SerializeField] public Slider _slider;
+    [SerializeField] public Image sliderImage, sliderBackgroundImage;
+    
     private void Start()
     {
-        PlayerInputManager.instance.onPlayerJoined += SetPlayerController;
         _slider.maxValue = hyggeWinCondition;
         _slider.value = hyggeAmount;
     }
 
     private void FixedUpdate()
     {
-        if (doneFrying || !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/) return;
+        if (!applyFrying || doneFrying || !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/) return;
 
         if (applyStartForce)
         {
@@ -68,7 +65,7 @@ public class SausageController : MonoBehaviour
             doneFrying = true;
             return;
         }
-        if (applyFrying && !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/)
+        if (applyFrying && hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/)
         {
             time += Time.deltaTime;
             if (time >= secondsPerHygge) {
@@ -86,10 +83,11 @@ public class SausageController : MonoBehaviour
                 inHotspot = false;
             }
         }
+        canvas.transform.position = canvasFollowTransform.transform.position;
     }
 
     // Start is called before the first frame update
-    void SetPlayerController(PlayerInput playerInput)
+    public void SetPlayerController(PlayerInput playerInput)
     {
         hasPlayerController = true;
         Debug.Log("set");
@@ -98,6 +96,14 @@ public class SausageController : MonoBehaviour
         _playerController.PlayerMoveA.AddListener(MoveStartRb);
         _playerController.PlayerMoveB.AddListener(MoveEndRb);
         _playerController.PlayerPause.AddListener(EnableUIActionMap);
+    }
+
+    public void SetCanvas(Canvas canvas)
+    {
+        this.canvas = canvas;
+        _slider = canvas.GetComponentInChildren<Slider>();
+        sliderBackgroundImage = _slider.GetComponentsInChildren<Image>()[0];
+        sliderImage = _slider.GetComponentsInChildren<Image>()[1];
     }
     
     void MoveStartRb(InputAction.CallbackContext callbackContext)
