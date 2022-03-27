@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,18 +6,43 @@ using UnityEngine.InputSystem;
 
 public class SausageController : MonoBehaviour
 {
-    private PlayerController _playerController;
+    [Header("Physics")]
     [SerializeField] private Rigidbody startRb;
     [SerializeField] private Rigidbody endRb;
+    [SerializeField] private bool hasPlayerController = false;
+    [SerializeField] private float moveForceScale = 1f;
+    [SerializeField] private bool applyStartForce = false;
+    [SerializeField] private bool applyEndForce = false;
     private Vector3 startForceVector = Vector3.zero;
     private Vector3 endForceVector = Vector3.zero;
-    private bool applyStartForce = false;
-    private bool applyEndForce = false;
+
+    [Header("Sausage stats")] 
+    [SerializeField] private int hyggeWinCondition = 100;
+
+    [SerializeField, Range(0f, 1000f)] private float hyggeAmount = 0f;
+    [SerializeField] private float secondsPerHygge = 1;
+    [SerializeField] private float hyggePerTick = 1;
+    [SerializeField] private bool applyFrying = false;
     
-    [SerializeField] private float moveForceScale = 1f;
+    [SerializeField] public bool inHotspot = false;
+    [SerializeField,Range(1f,4f)] public float HotspotMultiplier = 1f;
+    private float time;
+    private PlayerController _playerController;
+    
+    private void ToggleFrying(bool frying)
+    {
+        applyFrying = frying;
+    }
+
+    private void Start()
+    {
+        PlayerInputManager.instance.onPlayerJoined += SetPlayerController;
+    }
+
     private void FixedUpdate()
     {
-        if (_playerController.PlayerInput.currentActionMap.name != "Player") return;
+        if (hyggeAmount >= hyggeWinCondition || !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/) return;
+
         if (applyStartForce)
         {
             startRb.AddForce(new(startForceVector.x*moveForceScale, 0, startForceVector.y*moveForceScale));
@@ -27,10 +53,32 @@ public class SausageController : MonoBehaviour
             endRb.AddForce(new(endForceVector.x*moveForceScale, 0, endForceVector.y*moveForceScale));
         }
     }
-    // Start is called before the first frame update
-    void SetPlayerController(PlayerController playerController)
+
+    private void Update()
     {
-        _playerController = playerController;
+        if (hyggeAmount >= hyggeWinCondition)
+        {
+            inHotspot = false;
+            applyFrying = false;
+            return;
+        }
+        if (applyFrying && !hasPlayerController /*_playerController.m_PlayerInput.currentActionMap.name != "Player"*/)
+        {
+            time += Time.deltaTime;
+            if (time >= secondsPerHygge) {
+                time = time - secondsPerHygge;
+                hyggeAmount += inHotspot ? hyggePerTick * HotspotMultiplier : hyggePerTick;
+                inHotspot = false;
+            }
+        }
+    }
+
+    // Start is called before the first frame update
+    void SetPlayerController(PlayerInput playerInput)
+    {
+        hasPlayerController = true;
+        Debug.Log("set");
+        _playerController = playerInput.gameObject.GetComponent<PlayerController>();
         _playerController.PlayerJump.AddListener(Jump);
         _playerController.PlayerMoveA.AddListener(MoveStartRb);
         _playerController.PlayerMoveB.AddListener(MoveEndRb);
