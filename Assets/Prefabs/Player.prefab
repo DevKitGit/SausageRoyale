@@ -128,7 +128,7 @@ MonoBehaviour:
     m_ActionName: Player/Pause[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 7f3899c2-9885-47d0-8df5-e31b3cbef202
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1197907805045062825

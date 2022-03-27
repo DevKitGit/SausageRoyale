@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(instance);
 		Instance = instance;
 		Instance._assets = Resources.Load<GameAssets>("GameAssets");
+	}
+
+	public static void LoadMainScene()
+	{
+		SceneManager.LoadScene(1, LoadSceneMode.Single);
 	}
 
 	private GameAssets _assets;

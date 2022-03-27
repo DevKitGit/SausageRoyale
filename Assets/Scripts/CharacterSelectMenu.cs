@@ -5,25 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class VisualPlayer
-{
-	private const string LockedInString = "player__locked-in";
-	
-	public PlayerController Controller { get; set; }
-	public VisualElement Element { get; set; }
-	public bool LockedIn
-	{
-		get => Element?.ClassListContains(LockedInString) ?? false;
-		set
-		{
-			switch (value)
-			{
-				case true: Element.AddToClassList(LockedInString);break;
-				default: Element.RemoveFromClassList(LockedInString);break;
-			}
-		}
-	}
-}
 
 public class CharacterSelectMenu : IMenuHandler
 {
@@ -106,6 +87,11 @@ public class CharacterSelectMenu : IMenuHandler
 		}
 
 		visualPlayer.LockedIn = true;
+
+		if (_players.Count(p => p.LockedIn) >= 2)
+		{
+			GameManager.LoadMainScene();
+		}
 	}
 
 	void ProcessNavigation(VisualPlayer visualPlayer, InputAction.CallbackContext? context)
@@ -153,5 +139,25 @@ public class CharacterSelectMenu : IMenuHandler
 		visualPlayer.Controller.Sausage = sausage;
 		visualPlayer.Element.style.backgroundImage = sausage.Texture;
 		sausage.Color = visualPlayer.Element.style.borderBottomColor.value;
+	}
+	
+	private class VisualPlayer
+	{
+		private const string LockedInString = "player__locked-in";
+	
+		public PlayerController Controller { get; set; }
+		public VisualElement Element { get; set; }
+		public bool LockedIn
+		{
+			get => Element?.ClassListContains(LockedInString) ?? false;
+			set
+			{
+				switch (value)
+				{
+					case true: Element.AddToClassList(LockedInString);break;
+					default: Element.RemoveFromClassList(LockedInString);break;
+				}
+			}
+		}
 	}
 }
