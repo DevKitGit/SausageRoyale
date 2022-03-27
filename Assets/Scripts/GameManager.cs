@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 {
 	public static IEnumerator Start(IEnumerator i)
 	{
+		if (i == null)
+		{
+			return null;
+		}
+		
 		Instance.StartCoroutine(i);
 		return i;
 	}

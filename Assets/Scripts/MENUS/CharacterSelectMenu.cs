@@ -90,7 +90,7 @@ public class CharacterSelectMenu : IMenuHandler
 
 	void ProcessLockIn(VisualPlayer visualPlayer, InputAction.CallbackContext context)
 	{
-		if (!context.performed || visualPlayer.Controller == null || visualPlayer.Controller.Sausage == null)
+		if (visualPlayer.LockedIn || !context.performed || visualPlayer.Controller == null || visualPlayer.Controller.Sausage == null)
 		{
 			return;
 		}
@@ -98,8 +98,9 @@ public class CharacterSelectMenu : IMenuHandler
 		visualPlayer.LockedIn = true;
 		AudioManager.Play("squish-3");
 		
-		if (LockedInCount == ValidCount && ValidCount > 1)
+		if (_countDown == null && LockedInCount == ValidCount && ValidCount > 1)
 		{
+			GameManager.LoadMainScene();
 			_countDown = GameManager.Start(DoCountDown());
 		}
 	}
@@ -132,8 +133,10 @@ public class CharacterSelectMenu : IMenuHandler
 
 		if (!failed)
 		{
-			GameManager.LoadMainScene();;
+			GameManager.LoadMainScene();
 		}
+
+		_countDown = null;
 	}
 
 	void ProcessNavigation(VisualPlayer visualPlayer, InputAction.CallbackContext? context)
