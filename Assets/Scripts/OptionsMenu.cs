@@ -14,4 +14,12 @@ public class OptionsMenu : IMenuHandler
 		Element.Q<Toggle>("music").BindDirection(ui.NavigationButton, Direction.Down);
 		return this;
 	}
+
+	public void OnEnter()
+	{
+	}
+
+	public void OnExit()
+	{
+	}
 }

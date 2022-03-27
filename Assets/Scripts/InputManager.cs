@@ -18,8 +18,10 @@ public class InputManager : MonoBehaviour
 	
 	public static InputManager Instance { get; private set; }
     
-	private readonly List<PlayerController> _controllers = new List<PlayerController>();
+	private readonly List<PlayerController> _controllers = new();
 
+	public static event Action<PlayerController> OnPlayerJoin; 
+	
 	public static List<PlayerController> PlayerControllers => Instance._controllers;
 
 	private void Awake()
@@ -33,5 +35,24 @@ public class InputManager : MonoBehaviour
 	{
 		PlayerControllers.Add(controller);
 		DontDestroyOnLoad(controller);
+		OnPlayerJoin?.Invoke(controller);
+	}
+
+	public static void EnableJoining()
+	{
+		Instance.PlayerInputManager.EnableJoining();
+	}
+
+	public static void DisableJoining(bool deletePlayers)
+	{
+		Instance.PlayerInputManager.DisableJoining();
+		if (deletePlayers)
+		{
+			foreach (var playerController in PlayerControllers)
+			{
+				Destroy(playerController.gameObject);
+			}
+			PlayerControllers.Clear();
+		}
 	}
 }

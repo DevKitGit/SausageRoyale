@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class PlayerController : MonoBehaviour
 {
+    public Sausage Sausage { get;  set; }
     public PlayerInput PlayerInput { get; private set; }
+
+    public ReadOnlyArray<InputDevice> Devices => PlayerInput.devices;
     
     public PlayerInput.ActionEvent UiNavigate;
     public PlayerInput.ActionEvent UISubmit;
@@ -17,11 +22,24 @@ public class PlayerController : MonoBehaviour
     public PlayerInput.ActionEvent PlayerGrabA;
     public PlayerInput.ActionEvent PlayerGrabB;
     public PlayerInput.ActionEvent PlayerPause;
+    
+    private InputMode _inputMode;
 
-    void Start()
+    public InputMode InputMode
+    {
+        get => _inputMode;
+        set
+        {
+            _inputMode = value;
+            PlayerInput.SwitchCurrentActionMap(InputMode.ToString());
+        }
+    }
+
+    void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
         SetupEvents();
+        InputManager.AddPlayer(this);
     }
     
     void SetupEvents()

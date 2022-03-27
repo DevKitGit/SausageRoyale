@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UIElements;
 
@@ -33,15 +34,9 @@ public class UI : MonoBehaviour
 		{
 			return;
 		}
-
-		var last = _history.Pop();
-		last.Activate(false);
-
-		var current = _history.Peek();
-		current.Activate(true);
-		
+		_history.Pop().Activate(false);
+		_history.Peek().Activate(true);
 		_navigation?.Display(_history.Count > 1);
-		current.Element.GetFirstOfType<Button>()?.Focus();
 	}
 
 	private void Start()
@@ -72,7 +67,20 @@ public class UI : MonoBehaviour
 
 	private void SetupNavigation()
 	{
-		InputManager.Instance.InputSystem.cancel.action.performed += context => Back();
+		void OnBackPerformed(InputAction.CallbackContext context)
+		{
+			foreach (PlayerController playerController in InputManager.PlayerControllers)
+			{
+				if (playerController.PlayerInput.devices.Contains(context.control.device))
+				{
+					return;
+				}
+			}
+			
+			Back();
+		}
+
+		InputManager.Instance.InputSystem.cancel.action.performed += OnBackPerformed;
 		_navigation = Root.Q("navigation");
 		NavigationButton = Root.Q<Button>("back");
 		NavigationButton.BindValue(Back);

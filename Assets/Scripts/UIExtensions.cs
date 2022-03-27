@@ -27,8 +27,18 @@ public static class UIExtensions
 
 	public static void Activate(this IMenuHandler instance, bool shouldDisplay)
 	{
-		instance?.Element?.Display(shouldDisplay);
-		instance?.Element?.Query<BindableElement>().First()?.Focus();
+		if (instance == null)
+		{
+			return;
+		}
+		
+		instance.Element?.Display(shouldDisplay);
+		if (shouldDisplay)
+		{
+			instance.Element?.Query<BindableElement>().First()?.Focus();
+		}
+		Action action = shouldDisplay ? instance.OnEnter : instance.OnExit;
+		action.Invoke();
 	}
 
 	public static void BindDirection(this BindableElement element, VisualElement target, params NavigationMoveEvent.Direction[] dirs)
@@ -45,5 +55,13 @@ public static class UIExtensions
 				target?.Focus();
 			}
 		});
+	}
+
+	public static void BorderColor(this VisualElement e, Color color)
+	{
+		e.style.borderBottomColor = color;
+		e.style.borderLeftColor = color;
+		e.style.borderRightColor = color;
+		e.style.borderTopColor = color;
 	}
 }
