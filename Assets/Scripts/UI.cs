@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class UI : MonoBehaviour
@@ -15,6 +16,15 @@ public class UI : MonoBehaviour
 	private readonly Stack<IMenuHandler> _history = new();
 	private VisualElement _navigation;
 
+	private void SetNavbarText(string text = "")
+	{
+		var label = _navigation.Q<Label>("navBarLabel");
+		if (label != null)
+		{
+			label.text = text;
+		}
+	}
+
 
 	public void NavigateTo<T>() where T : IMenuHandler
 	{
@@ -23,6 +33,7 @@ public class UI : MonoBehaviour
 			AudioManager.Play("squish-3");
 		}
 
+		SetNavbarText();
 		var menu = GetHandler<T>();
 		if (_history.TryPeek(out var last))
 		{
@@ -32,6 +43,7 @@ public class UI : MonoBehaviour
 		_history.Push(menu);
 		menu.Activate(true);
 		_navigation?.Display(menu.HasNavigation);
+		
 	}
 
 	private void Back()

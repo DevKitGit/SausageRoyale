@@ -1,18 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Rendering;
 
 public class SplashScreenExample : MonoBehaviour
 {
+	private IDisposable listener;
+
 	IEnumerator Start()
 	{
-		Debug.Log("Showing splash screen");
+		InputManager.Instance.InputSystem.enabled = false;
+		listener = InputSystem.onAnyButtonPress.Call(_ => Stop());
 		SplashScreen.Begin();
+		
 		while (!SplashScreen.isFinished)
 		{
 			SplashScreen.Draw();
 			yield return null;
 		}
-		Debug.Log("Finished showing splash screen");
+	}
+
+	private void Stop()
+	{
+		SplashScreen.Stop(SplashScreen.StopBehavior.FadeOut);
+		listener.Dispose();
+		InputManager.Instance.InputSystem.enabled = true;
 	}
 }

@@ -14,6 +14,8 @@ public class CharacterSelectMenu : IMenuHandler
 	private readonly List<VisualPlayer> _players = new ();
 	private UI _ui;
 
+	private int LockedInCount => _players.Count(p => p.LockedIn);
+	private int ValidCount => _players.Count(p => p.IsValid);
 
 	public IMenuHandler Bind(UI ui)
 	{
@@ -41,6 +43,7 @@ public class CharacterSelectMenu : IMenuHandler
 		ResetChildren();
 		InputManager.EnableJoining();
 		InputManager.OnPlayerJoin += OnPlayerJoin;
+		// SetNavbarText
 	}
 
 	public void OnExit()
@@ -75,6 +78,7 @@ public class CharacterSelectMenu : IMenuHandler
 		if (visualPlayer.LockedIn)
 		{
 			visualPlayer.LockedIn = false;
+			AudioManager.Play("back-1");
 			return;
 		}
 	}
@@ -87,7 +91,7 @@ public class CharacterSelectMenu : IMenuHandler
 		}
 
 		visualPlayer.LockedIn = true;
-
+		AudioManager.Play("squish-3");
 		if (_players.Count(p => p.LockedIn) >= 2)
 		{
 			GameManager.LoadMainScene();
@@ -144,7 +148,8 @@ public class CharacterSelectMenu : IMenuHandler
 	private class VisualPlayer
 	{
 		private const string LockedInString = "player__locked-in";
-	
+
+		public bool IsValid => Controller != null;
 		public PlayerController Controller { get; set; }
 		public VisualElement Element { get; set; }
 		public bool LockedIn

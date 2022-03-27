@@ -55,4 +55,12 @@ public class InputManager : MonoBehaviour
 			PlayerControllers.Clear();
 		}
 	}
+
+	private void OnDestroy()
+	{
+		foreach (PlayerController playerController in _controllers)
+		{
+			Destroy(playerController.gameObject);
+		}
+	}
 }
