@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS_Styles.uss?fileID=7433441132597879392&amp;guid=4754db1e383ca1840a08995a8f176a45&amp;type=3#USS_Styles" />
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:VisualElement name="main-menu" style="flex-grow: 1; background-color: rgb(238, 73, 73); display: flex;">
+        <ui:VisualElement name="main-menu" style="flex-grow: 1; background-color: rgb(238, 73, 73); display: none;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
                 <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
                     <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="newgame" class="button" />
@@ -19,14 +19,22 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="character-select-menu" style="flex-grow: 1; background-color: rgb(231, 110, 176); display: none;">
+        <ui:VisualElement name="character-select-menu" style="flex-grow: 1; background-color: rgb(231, 110, 176); display: flex;">
             <ui:Label text="CLICK TO SAUSAGE" display-tooltip-when-elided="true" class="header text" />
             <ui:VisualElement style="flex-grow: 1; align-items: center; flex-direction: row;">
                 <ui:VisualElement name="characters" style="flex-direction: row; flex-grow: 1; justify-content: center;">
-                    <ui:Button display-tooltip-when-elided="true" name="character-1" enable-rich-text="false" focusable="false" class="button__vertical player__1" style="display: flex;" />
-                    <ui:Button display-tooltip-when-elided="true" name="character-2" enable-rich-text="false" focusable="false" class="button__vertical player__2" style="display: flex;" />
-                    <ui:Button display-tooltip-when-elided="true" name="character-3" enable-rich-text="false" focusable="false" class="button__vertical player__3" style="display: flex;" />
-                    <ui:Button display-tooltip-when-elided="true" name="character-4" enable-rich-text="false" focusable="false" class="button__vertical player__4" />
+                    <ui:Button display-tooltip-when-elided="true" name="character-1" enable-rich-text="false" focusable="false" class="button__vertical player__1">
+                        <ui:Label text="ONE" display-tooltip-when-elided="true" class="header" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="character-2" enable-rich-text="false" focusable="false" class="button__vertical player__2" style="display: flex;">
+                        <ui:Label text="TWO" display-tooltip-when-elided="true" class="header" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="character-3" enable-rich-text="false" focusable="false" class="button__vertical player__3">
+                        <ui:Label text="THREE" display-tooltip-when-elided="true" class="header" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="character-4" enable-rich-text="false" focusable="false" class="button__vertical player__4">
+                        <ui:Label text="FOUR" display-tooltip-when-elided="true" class="header" />
+                    </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

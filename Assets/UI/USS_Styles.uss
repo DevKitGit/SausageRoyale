@@ -81,11 +81,12 @@
     border-top-width: 0;
     border-bottom-width: 0;
     rotate: -1deg;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 100px;
     padding-bottom: 100px;
-    max-width: 200px;
+    width: 200px;
+    overflow: visible;
 }
 
 .button__vertical:focus {
@@ -99,7 +100,7 @@
     border-left-width: 2px;
     border-right-width: 2px;
     border-top-width: 2px;
-    border-bottom-width: 10px;
+    border-bottom-width: 60px;
     border-left-color: rgb(226, 58, 104);
     border-right-color: rgb(226, 58, 104);
     border-top-color: rgb(226, 58, 104);
@@ -110,18 +111,18 @@
     border-left-width: 2px;
     border-right-width: 2px;
     border-top-width: 2px;
-    border-bottom-width: 10px;
-    border-left-color: rgb(69, 248, 113);
-    border-right-color: rgb(69, 248, 113);
-    border-top-color: rgb(69, 248, 113);
-    border-bottom-color: rgb(69, 248, 113);
+    border-bottom-width: 60px;
+    border-left-color: rgb(144, 219, 94);
+    border-right-color: rgb(144, 219, 94);
+    border-top-color: rgb(144, 219, 94);
+    border-bottom-color: rgb(144, 219, 94);
 }
 
 .player__3 {
     border-left-width: 2px;
     border-right-width: 2px;
     border-top-width: 2px;
-    border-bottom-width: 10px;
+    border-bottom-width: 60px;
     border-left-color: rgb(90, 215, 255);
     border-right-color: rgb(90, 215, 255);
     border-top-color: rgb(90, 215, 255);
@@ -132,7 +133,7 @@
     border-left-width: 2px;
     border-right-width: 2px;
     border-top-width: 2px;
-    border-bottom-width: 10px;
+    border-bottom-width: 60px;
     border-left-color: rgb(133, 61, 243);
     border-right-color: rgb(133, 61, 243);
     border-top-color: rgb(133, 61, 243);
@@ -164,4 +165,8 @@
 
 .player__4.player__locked-in {
     -unity-background-image-tint-color: rgb(133, 61, 243);
+}
+
+.button__vertical > .header {
+    translate: 0 170px;
 }
