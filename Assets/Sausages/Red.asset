@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Red
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 7774216744109690502, guid: e8972fee6402eb944a0b65637557e7dd, type: 3}
-  <Color>k__BackingField: {r: 0.27058825, g: 0.9725491, b: 0.4431373, a: 1}
+  <Color>k__BackingField: {r: 1, g: 0.42830187, b: 0.42830187, a: 0}
   <Texture>k__BackingField: {fileID: 2800000, guid: 8ea90238121f1cd428b70c9a5f01bfa8, type: 3}
