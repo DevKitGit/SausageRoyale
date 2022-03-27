@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
 	public static void StartGameMusic()
 	{
 		_instance = null;

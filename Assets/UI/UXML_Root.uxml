@@ -9,7 +9,7 @@
                     <ui:Button text="EXIT" display-tooltip-when-elided="true" name="exit" tabindex="2" class="button" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="logo" style="position: absolute; background-image: url(&apos;project://database/Assets/Textures/Logo.psd?fileID=2800000&amp;guid=92df5002732449347987986c1196efb5&amp;type=3#Logo&apos;); -unity-background-scale-mode: scale-to-fit; width: 746px; height: 337px; rotate: 0; left: 55px;" />
+            <ui:VisualElement name="logo" style="position: absolute; background-image: url(&apos;project://database/Assets/Textures/LogoTexture.psd?fileID=2800000&amp;guid=c671bb82b5e69c944b2ffe70bd8ab2e0&amp;type=3#LogoTexture&apos;); -unity-background-scale-mode: scale-to-fit; width: 746px; height: 337px; rotate: 0; left: 55px;" />
         </ui:VisualElement>
         <ui:VisualElement name="options-menu" style="flex-grow: 1; background-color: rgb(238, 100, 73); display: none;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
