@@ -7,12 +7,17 @@ public class Hotspot : MonoBehaviour
 {
     public SphereCollider sphereCollider;
     [SerializeField] private float rotationSpeed;
+
+    public bool gamePlaying;
     // Start is called before the first frame update
     
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime));
+        if (gamePlaying)
+        {
+            transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime));
+        }
     }
 
     private void OnTriggerStay(Collider other)

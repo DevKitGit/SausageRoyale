@@ -29,13 +29,15 @@ public class SausageController : MonoBehaviour
     private float time;
     private PlayerController _playerController;
     
-
     private void ToggleFrying(bool frying)
     {
         applyFrying = frying;
     }
-    
-    
+
+    private void Start()
+    {
+        PlayerInputManager.instance.onPlayerJoined += SetPlayerController;
+    }
 
     private void FixedUpdate()
     {
@@ -72,10 +74,11 @@ public class SausageController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void SetPlayerController(PlayerController playerController)
+    void SetPlayerController(PlayerInput playerInput)
     {
         hasPlayerController = true;
-        _playerController = playerController;
+        Debug.Log("set");
+        _playerController = playerInput.gameObject.GetComponent<PlayerController>();
         _playerController.PlayerJump.AddListener(Jump);
         _playerController.PlayerMoveA.AddListener(MoveStartRb);
         _playerController.PlayerMoveB.AddListener(MoveEndRb);
