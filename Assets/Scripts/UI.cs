@@ -26,7 +26,7 @@ public class UI : MonoBehaviour
 		_history.Push(menu);
 		menu.Activate(true);
 		_navigation?.Display(menu.HasNavigation);
-		AudioManager.PlayOneShot("squish-3");
+		AudioManager.Play("squish-3");
 	}
 
 	private void Back()
@@ -38,7 +38,7 @@ public class UI : MonoBehaviour
 		_history.Pop().Activate(false);
 		_history.Peek().Activate(true);
 		_navigation?.Display(_history.Count > 1);
-		AudioManager.PlayOneShot("sizzle-1");
+		AudioManager.Play("sizzle-1");
 	}
 
 	private void Start()
@@ -65,18 +65,18 @@ public class UI : MonoBehaviour
 			};
 			if (clipName != null)
 			{
-				AudioManager.PlayOneShot(clipName);
+				AudioManager.Play(clipName);
 			}
 		}
 		
 		void Submit(NavigationSubmitEvent evt)
 		{
-			AudioManager.PlayOneShot("sizzle-1");
+			AudioManager.Play("sizzle-1");
 		}
 		
 		void Cancel(NavigationCancelEvent evt)
 		{
-			AudioManager.PlayOneShot("back-1");
+			AudioManager.Play("back-1");
 		}
 		
 		Root.RegisterCallback<NavigationMoveEvent>(Move);

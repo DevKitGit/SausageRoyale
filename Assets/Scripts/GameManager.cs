@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance { get; private set; }
 
-	[RuntimeInitializeOnLoadMethod]
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 	private static void OnGameStart()
 	{
 		var instance = new GameObject("GAME MANAGER").AddComponent<GameManager>();
