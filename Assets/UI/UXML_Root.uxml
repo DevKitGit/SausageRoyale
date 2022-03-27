@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS_Styles.uss?fileID=7433441132597879392&amp;guid=4754db1e383ca1840a08995a8f176a45&amp;type=3#USS_Styles" />
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:VisualElement name="main-menu" style="flex-grow: 1; background-color: rgb(238, 73, 73); display: none;">
+        <ui:VisualElement name="main-menu" style="flex-grow: 1; background-color: rgb(238, 73, 73); display: flex;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
                 <ui:VisualElement style="align-items: flex-end; justify-content: flex-end; padding-left: 35px; padding-right: 35px; padding-top: 35px; padding-bottom: 35px;">
                     <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="newgame" class="button" />
@@ -9,6 +9,7 @@
                     <ui:Button text="EXIT" display-tooltip-when-elided="true" name="exit" tabindex="2" class="button" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:VisualElement name="logo" style="position: absolute; background-image: url(&apos;project://database/Assets/Textures/Logo.psd?fileID=2800000&amp;guid=92df5002732449347987986c1196efb5&amp;type=3#Logo&apos;); -unity-background-scale-mode: scale-to-fit; width: 746px; height: 337px; rotate: 0; left: 55px;" />
         </ui:VisualElement>
         <ui:VisualElement name="options-menu" style="flex-grow: 1; background-color: rgb(238, 100, 73); display: none;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
@@ -18,7 +19,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="character-select-menu" style="flex-grow: 1; background-color: rgb(231, 110, 176);">
+        <ui:VisualElement name="character-select-menu" style="flex-grow: 1; background-color: rgb(231, 110, 176); display: none;">
             <ui:Label text="CLICK TO SAUSAGE" display-tooltip-when-elided="true" class="header text" />
             <ui:VisualElement style="flex-grow: 1; align-items: center; flex-direction: row;">
                 <ui:VisualElement name="characters" style="flex-direction: row; flex-grow: 1; justify-content: center;">
@@ -29,7 +30,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="navigation" style="align-items: flex-end; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 25px; padding-right: 25px; padding-top: 5px; padding-bottom: 5px; flex-shrink: 0; background-color: rgb(0, 0, 0); display: flex; overflow: hidden;">
+        <ui:VisualElement name="navigation" style="align-items: flex-end; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 25px; padding-right: 25px; padding-top: 5px; padding-bottom: 5px; flex-shrink: 0; background-color: rgb(0, 0, 0); display: none; overflow: hidden;">
             <ui:VisualElement style="max-width: 200px;">
                 <ui:Button text="BACK" display-tooltip-when-elided="true" name="back" tabindex="5" focusable="true" class="button" style="scale: 0.7 0.7;" />
             </ui:VisualElement>
