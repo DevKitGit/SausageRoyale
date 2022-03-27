@@ -60,6 +60,10 @@ public class InputManager : MonoBehaviour
 	{
 		foreach (PlayerController playerController in _controllers)
 		{
+			if (playerController == null)
+			{
+				continue;
+			}
 			Destroy(playerController.gameObject);
 		}
 	}

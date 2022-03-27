@@ -1,8 +1,24 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	public static IEnumerator Start(IEnumerator i)
+	{
+		Instance.StartCoroutine(i);
+		return i;
+	}
+	
+	public static void Stop(IEnumerator i)
+	{
+		if (i == null)
+		{
+			return;
+		}
+		Instance.StopCoroutine(i);
+	}
+	
 	public static GameAssets Assets => Instance._assets;
 
 	public static GameManager Instance { get; private set; }

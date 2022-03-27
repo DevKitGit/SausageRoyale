@@ -16,12 +16,12 @@ public class UI : MonoBehaviour
 	private readonly Stack<IMenuHandler> _history = new();
 	private VisualElement _navigation;
 
-	private void SetNavbarText(string text = "")
+	public void SetNavbarText(string text = "")
 	{
 		var label = _navigation.Q<Label>("navBarLabel");
 		if (label != null)
 		{
-			label.text = text;
+			label.text = text.ToUpper();
 		}
 	}
 

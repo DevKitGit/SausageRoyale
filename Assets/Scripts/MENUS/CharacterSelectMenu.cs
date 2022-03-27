@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class CharacterSelectMenu : IMenuHandler
 	private int LockedInCount => _players.Count(p => p.LockedIn);
 	private int ValidCount => _players.Count(p => p.IsValid);
 
+	private IEnumerator _countDown;
+	
 	public IMenuHandler Bind(UI ui)
 	{
 		_ui = ui;
@@ -43,7 +46,7 @@ public class CharacterSelectMenu : IMenuHandler
 		ResetChildren();
 		InputManager.EnableJoining();
 		InputManager.OnPlayerJoin += OnPlayerJoin;
-		// SetNavbarText
+		_ui.SetNavbarText("Press a button to join");
 	}
 
 	public void OnExit()
@@ -79,7 +82,9 @@ public class CharacterSelectMenu : IMenuHandler
 		{
 			visualPlayer.LockedIn = false;
 			AudioManager.Play("back-1");
-			return;
+			GameManager.Stop(_countDown);
+			_ui.SetNavbarText("Press a button to join");
+			_countDown = null;
 		}
 	}
 
@@ -92,9 +97,42 @@ public class CharacterSelectMenu : IMenuHandler
 
 		visualPlayer.LockedIn = true;
 		AudioManager.Play("squish-3");
-		if (_players.Count(p => p.LockedIn) >= 2)
+		
+		if (LockedInCount == ValidCount && ValidCount > 1)
 		{
-			GameManager.LoadMainScene();
+			_countDown = GameManager.Start(DoCountDown());
+		}
+	}
+
+	IEnumerator DoCountDown()
+	{
+		var seconds = 3;
+		var interval = .5f;
+		var failed = false;
+		
+		for (int i = 0; i < seconds; i++)
+		{
+			string num = i switch
+			{
+				0 => "THREE",
+				1 => "TWO",
+				2 => "ONE",
+				3 => "0",
+				_ => "throw new ArgumentOutOfRangeException()",
+			};
+			
+			_ui.SetNavbarText($"All players ready! {num}!");
+			yield return new WaitForSeconds(1);
+			if (LockedInCount != ValidCount || ValidCount <= 1)
+			{
+				failed = true;
+				break;
+			}
+		}
+
+		if (!failed)
+		{
+			GameManager.LoadMainScene();;
 		}
 	}
 
@@ -120,6 +158,7 @@ public class CharacterSelectMenu : IMenuHandler
 			return;
 		}
 		
+		AudioManager.Play("squish-2");
 		int dir = context.Value.ReadValue<Vector2>().x > 0 ? 1 : -1;
 
 		int currentIndex = sausages.IndexOf(visualPlayer.Controller.Sausage);
