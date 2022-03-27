@@ -22,6 +22,11 @@ public class SplashScreenExample : MonoBehaviour
 		}
 	}
 
+	private void OnDisable()
+	{
+		listener?.Dispose();
+	}
+
 	private void Stop()
 	{
 		SplashScreen.Stop(SplashScreen.StopBehavior.FadeOut);
