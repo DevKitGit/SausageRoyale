@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(instance);
 		Instance = instance;
 		Instance._assets = Resources.Load<GameAssets>("GameAssets");
-		Debug.Log(Instance.gameObject);
 	}
 
 	public static void LoadMainScene()

@@ -4,27 +4,22 @@ using UnityEngine.UIElements;
 
 public class MainMenuHandler : IMenuHandler
 {
-	private UI _ui;
-	public bool HasNavigation => false;
-	public VisualElement Element { get; set; }
+	public UI UI { get; set; }
+	public VisualElement Element => UI.Root.Q("main-menu");
 
-	public IMenuHandler Bind(UI ui)
+	public void BindControls()
 	{
-		Element = ui.Root.Q("main-menu");
-		_ui = ui;
 		var optionsButton = Element.Q<Button>("options");
-		optionsButton.BindValue(ui.NavigateTo<OptionsMenu>);
+		optionsButton.BindValue(UI.Navigation.NavigateTo<OptionsMenu>);
 		var newGameButton = Element.Q<Button>("newgame");
-		newGameButton.BindValue(ui.NavigateTo<CharacterSelectMenu>);
+		newGameButton.BindValue(UI.Navigation.NavigateTo<CharacterSelectMenu>);
 		var exitButton = Element.Q<Button>("exit");
 		exitButton.BindValue(Application.Quit);
-		
-		return this;
 	}
 
 	public void OnEnter()
 	{
-		_ui.SetNavbarText("Have a nice day~");
+		UI.Navigation.SetNavbarText("Have a nice day~");
 	}
 
 	public void OnExit()

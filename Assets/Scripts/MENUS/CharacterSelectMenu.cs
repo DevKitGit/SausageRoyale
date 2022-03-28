@@ -10,22 +10,19 @@ using Object = UnityEngine.Object;
 
 public class CharacterSelectMenu : IMenuHandler
 {
-	public bool HasNavigation => true;
-	public VisualElement Element { get; private set; }
+	public UI UI { get; set; }
+	public VisualElement Element => UI.Root.Q("character-select-menu");
 	
 	private readonly List<VisualPlayer> _players = new ();
-	private UI _ui;
 
 	private int LockedInCount => _players.Count(p => p.LockedIn);
 	private int ValidCount => _players.Count(p => p.IsValid);
 
 	private IEnumerator _countDown;
-	
-	public IMenuHandler Bind(UI ui)
+
+	public void BindControls()
 	{
-		_ui = ui;
-		Element = ui.Root.Q("character-select-menu");
-		return this;
+		
 	}
 
 	private void ResetChildren()
@@ -42,17 +39,17 @@ public class CharacterSelectMenu : IMenuHandler
 	public void OnEnter()
 	{
 		_players.Clear();
-		_ui.NavigationButton.SetEnabled(false);
+		UI.Navigation.IsBackButtonEnabled = false;
 
 		ResetChildren();
 		InputManager.EnableJoining();
 		InputManager.OnPlayerJoin += OnPlayerJoin;
-		_ui.SetNavbarText("Press a button to join");
+		UI.Navigation.SetNavbarText("Press a button to join");
 	}
 
 	public void OnExit()
 	{
-		_ui.NavigationButton.SetEnabled(true);
+		UI.Navigation.IsBackButtonEnabled = true;
 		InputManager.OnPlayerJoin -= OnPlayerJoin;
 		InputManager.DisableJoining(true);
 		ResetChildren();
@@ -85,7 +82,7 @@ public class CharacterSelectMenu : IMenuHandler
 		{
 			visualPlayer.LockedIn = false;
 			GameManager.Stop(_countDown);
-			_ui.SetNavbarText("Press a button to join");
+			UI.Navigation.SetNavbarText("Press a button to join");
 			_countDown = null;
 		}
 		else
@@ -126,7 +123,7 @@ public class CharacterSelectMenu : IMenuHandler
 				_ => "throw new ArgumentOutOfRangeException()",
 			};
 			
-			_ui.SetNavbarText($"All players ready! {num}!");
+			UI.Navigation.SetNavbarText($"All players ready! {num}!");
 			yield return new WaitForSeconds(1);
 			if (LockedInCount != ValidCount || ValidCount <= 1)
 			{

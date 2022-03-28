@@ -4,22 +4,18 @@ using static UnityEngine.UIElements.NavigationMoveEvent;
 
 public class OptionsMenu : IMenuHandler
 {
-	private UI _ui;
-	public bool HasNavigation => true;
-	public VisualElement Element { get; set; }
+	public UI UI { get; set; }
+	public VisualElement Element => UI.Root.Q("options-menu");
 
-	public IMenuHandler Bind(UI ui)
+	public void BindControls()
 	{
-		_ui = ui;
-		Element = ui.Root.Q("options-menu");
-		Element.Q<Toggle>("sfx").BindDirection(ui.NavigationButton, Direction.Up);
-		Element.Q<Toggle>("music").BindDirection(ui.NavigationButton, Direction.Down);
-		return this;
+		// Element.Q<Toggle>("sfx").BindDirection(UI.NavigationButton, Direction.Up);
+		// Element.Q<Toggle>("music").BindDirection(UI.NavigationButton, Direction.Down);
 	}
 
 	public void OnEnter()
 	{
-		_ui.SetNavbarText("These options are broken");
+		UI.Navigation.SetNavbarText("These options are broken");
 	}
 
 	public void OnExit()

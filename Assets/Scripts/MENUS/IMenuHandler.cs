@@ -2,9 +2,9 @@
 
 public interface IMenuHandler
 {
-	bool HasNavigation { get; }
+	UI UI { get; set; }
 	VisualElement Element { get; }
-	IMenuHandler Bind(UI ui);
+	void BindControls();
 	void OnEnter();
 	void OnExit();
 }
