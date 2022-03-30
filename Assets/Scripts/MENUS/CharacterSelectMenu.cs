@@ -194,6 +194,7 @@ public class CharacterSelectMenu : IMenuHandler
 
 		public void Reset()
 		{
+			LockedIn = false;
 			Element.SetEnabled(false);
 			Element.style.backgroundImage = null;
 			if (Controller == null)
