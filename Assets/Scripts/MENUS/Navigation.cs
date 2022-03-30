@@ -13,6 +13,15 @@ public class Navigation
 		var element = ui.Root.Q("navigation");
 		
 		_backButton.BindValue(Back);
+		
+		
+		ui.Root.RegisterCallback<MouseOverEvent>(e =>
+		{
+			if (e.target is Focusable f && e.target is VisualElement v && v.ClassListContains("button"))
+			{
+				f.Focus();
+			}
+		});
 		BindNavigateFromBackButton(element);
 		BindNavigateToBackButton(_menuHandlers);
 		InputManager.Instance.InputSystem.cancel.action.performed += Back;

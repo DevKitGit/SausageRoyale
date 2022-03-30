@@ -12,6 +12,14 @@
     border-bottom-right-radius: 10px;
     background-image: none;
     -unity-text-align: upper-right;
+    transition-property: scale;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out-circ;
+    scale: 0;
+}
+
+.button:checked .unity-toggle__checkmark {
+    scale: 1;
 }
 
 .button .unity-text-element {

@@ -23,10 +23,35 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-	public static void StartGameMusic()
+	public static bool MusicEnabled
 	{
-		_instance = null;
+		get => PlayerPrefs.GetInt("MusicEnabled", 1) == 1;
+		set
+		{
+			PlayerPrefs.SetInt("MusicEnabled", value ? 1 : 0);
+			PlayerPrefs.Save();
+			SetParameterEnabled("MusicVolume", value);
+		}
+	}
+
+	public static bool SfxEnabled
+	{
+		get => PlayerPrefs.GetInt("SfxEnabled", 1) == 1;
+		set
+		{
+			PlayerPrefs.SetInt("SfxEnabled", value ? 1 : 0);
+			PlayerPrefs.Save();
+			SetParameterEnabled("SfxVolume", value);
+		}
+	}
+	
+	private static void SetParameterEnabled(string parameter, bool enabled) => GameManager.Assets.Mixer.SetFloat(parameter, enabled ? 0 : -80);
+
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+	public static void OnGameStart()
+	{
+		_instance = Instance;
+
 		
 		var startMusic = Play("ben-sexy", looping:true, "MenuSoundtrack");
 		var gameMusic = Play("erotic-sexy", looping:true, "IngameSoundtrack");
@@ -35,6 +60,8 @@ public class AudioManager : MonoBehaviour
 		IEnumerator Routine()
 		{
 			yield return new WaitForEndOfFrame();
+			MusicEnabled = MusicEnabled;
+			SfxEnabled = SfxEnabled;
 			uiSnap.TransitionTo(.3f);
 		}
 

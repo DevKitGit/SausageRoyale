@@ -8,11 +8,14 @@ public class UI : MonoBehaviour
 {
 	public VisualElement Root { get; private set; }
 	public Navigation Navigation { get; private set; }
-	
+
 	private readonly List<IMenuHandler> _menuHandlers = new();
+	
+	private IPanel _panel;
 
 	private void Start()
 	{
+		_panel = FindObjectOfType<PanelEventHandler>().panel;
 		Root = GetComponent<UIDocument>().rootVisualElement;
 		InputManager.Instance.EventSystem.SetSelectedGameObject(gameObject);
 		SetupHandlers();
@@ -36,6 +39,15 @@ public class UI : MonoBehaviour
 			}
 		}
 
+		void Callback(MouseOverEvent e)
+		{
+			if (_panel.focusController.focusedElement != e.target && e.target is VisualElement v && v.ClassListContains("button"))
+			{
+				AudioManager.Play("squish-1");
+			}
+		}
+
+		Root.RegisterCallback<MouseOverEvent>(Callback);
 		Root.RegisterCallback<NavigationMoveEvent>(Move);
 	}
 
